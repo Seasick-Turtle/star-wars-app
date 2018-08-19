@@ -1,0 +1,16 @@
+.main-header {
+	color: white;
+	background-color: #000;
+	margin: 0;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.logo {
+	position: relative;
+	align-self: flex-start;
+	width: 18em;
+	height: 10em;
+	margin-bottom: 20px;
+}
