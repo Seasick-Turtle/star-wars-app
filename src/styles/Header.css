@@ -1,16 +1,22 @@
 .main-header {
 	color: white;
 	background-color: #000;
-	margin: 0;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
 }
 
+.main-header__options {
+	/*Width: 100%;*/
+	align-self: flex-end;
+	margin-bottom: 7px;
+	margin-right: 1em;
+}
+
 .logo {
 	position: relative;
-	align-self: flex-start;
 	width: 18em;
 	height: 10em;
 	margin-bottom: 20px;
+	padding-left: 5px;
 }
