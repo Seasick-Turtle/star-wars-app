@@ -7,10 +7,8 @@
 }
 
 .main-header__options {
-	/*Width: 100%;*/
 	align-self: flex-end;
-	margin-bottom: 7px;
-	margin-right: 1em;
+	margin: 1.2em;
 }
 
 .logo {
