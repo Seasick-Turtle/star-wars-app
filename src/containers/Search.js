@@ -5,16 +5,25 @@ export default class Search extends Component {
   render() {
     return (
       <div className='search-main'>
-        {/*<i className='search-icon'></i>*/}
        <input type='search' placeholder='Search for planets, etc.' id='search-main__bar' />
 
-        <button className='search-main__search-button'>Search</button>
-        <div>
-          Filter By:
-          <button className='search-main__filter-button'>Planets</button>
-          <button className='search-main__filter-button'>Characters</button>
-          <button className='search-main__filter-button'>Movies</button>
-        </div>
+        <button className='search-main__search__button'>Search</button>
+
+        <fieldset className='search-main__search--filter'>
+          <legend>Filter By: </legend>
+          <label htmlFor='planets' className='filter__items'>
+            <input type='checkbox' id='planets' name='filter'/>
+            Planets
+          </label>
+          <label htmlFor='characters' className='filter__items'>
+            <input type='checkbox'  id='characters' name='filter'/>
+           Characters
+          </label>
+          <label htmlFor='movies' className='filter__items'>
+            <input type='checkbox' id='movies' name='filter'/>
+            Movies
+          </label>
+        </fieldset>
 
       </div>
     )
