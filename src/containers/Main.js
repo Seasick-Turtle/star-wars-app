@@ -7,10 +7,12 @@ import Movies from '../components/Movies';
 export default class Main extends Component {
   render() {
     return (
-      <main className='main'>
-        <Planets />
-        <Characters />
-        <Movies />
+      <main>
+        <div className='main'>
+          <Movies />
+          <Planets />
+          <Characters />
+        </div>
       </main>
     )
   }

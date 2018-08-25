@@ -12,16 +12,16 @@ export default class Search extends Component {
         <fieldset className='search-main__search--filter'>
           <legend>Filter By: </legend>
           <label htmlFor='planets' className='filter__items'>
-            <input type='checkbox' id='planets' name='filter'/>
-            Planets
+            <input type='checkbox' id='planets' name='filter' checked='true'/>
+            Movies
           </label>
           <label htmlFor='characters' className='filter__items'>
             <input type='checkbox'  id='characters' name='filter'/>
-           Characters
+            Planets
           </label>
           <label htmlFor='movies' className='filter__items'>
             <input type='checkbox' id='movies' name='filter'/>
-            Movies
+            Characters
           </label>
         </fieldset>
 
