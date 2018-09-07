@@ -3,7 +3,7 @@ import '../styles/Characters.css';
 
 const Characters = () => {
   return (
-    <section className='characters'>
+    <section className='characters col-3'>
       <h3>
         Characters component
       </h3>

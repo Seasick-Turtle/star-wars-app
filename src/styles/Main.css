@@ -1,6 +1,14 @@
 .main {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(1em, 1fr));
 	grid-gap: 1em;
 	margin: 1em;
+
+}
+
+@media only screen and (min-width: 749px) {
+	.main {
+		grid-template-columns: repeat(auto-fit, minmax(1em, 1fr));
+		grid-gap: 1em;
+		margin: 1em;
+	}
 }

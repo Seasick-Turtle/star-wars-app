@@ -1,9 +1,9 @@
 import React from 'react';
 import '../styles/Planets.css';
 
-const Planets = () => {
+const Planets = ({ planets }) => {
   return (
-    <section className='planets'>
+    <section className='planets col-2'>
      <h3>Planets component</h3>
     </section>
   )
