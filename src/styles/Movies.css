@@ -1,0 +1,7 @@
+.movies {
+	border: 1px solid white;
+	border-radius: 5px;
+	color: yellow;
+	grid-area: 1;
+
+}
