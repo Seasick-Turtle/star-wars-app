@@ -1,28 +1,19 @@
 import React, { Component } from 'react';
 import '../styles/Main.css';
 import Planets from '../components/Planets';
-import Characters from '../components/Characters';
-import Movies from '../components/Movies';
+import People from '../components/People';
+import Films from '../components/Films';
 
 export default class Main extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      planets: [],
-      movies: [],
-      characters: []
-    }
-  }
 
   render() {
-
+    const { planets, films, people } = this.props;
     return (
       <main>
         <div className='main'>
-          <Movies />
-          <Planets />
-          <Characters />
+          <Films films={films}/>
+          <Planets planets={planets}/>
+          <People people={people}/>
         </div>
       </main>
     )
