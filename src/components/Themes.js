@@ -2,9 +2,9 @@ import React from 'react';
 
 const Themes = () => {
   return (
-    <div>Themes :
-
-      <p>Icons go here</p>
+    <div>
+      Themes :
+      <p>Coming Soon</p>
 
     </div>
   )
