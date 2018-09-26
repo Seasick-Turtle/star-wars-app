@@ -4,13 +4,13 @@ import Themes from './Themes';
 import '../styles/Header.css';
 import StarWarsLogo from '../styles/swapi-example-logo-transparent.png';
 
-const Header = () => {
+const Header = ({ searchQuery }) => {
   return (
     <header className='main-header'>
         <img src={StarWarsLogo} alt='gold star wars logo' className='logo'/>
       <div className='main-header__options'>
         <Themes />
-        <Search />
+        <Search searchQuery={searchQuery}/>
       </div>
     </header>
   )

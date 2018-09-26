@@ -6,7 +6,11 @@ export default class Search extends Component {
   render() {
     return (
       <div className='search-main'>
-       <input type='search' placeholder='Search for planets, etc.' id='search-main__bar' />
+       <input
+         type='search'
+         placeholder='Search for planets, etc.'
+         id='search-main__bar'
+       />
 
         <button className='search-main__search__button'>Search</button>
 

@@ -24,10 +24,14 @@ class App extends Component {
 
 
   async fetchPlanets() {
-    fetch('https://swapi.co/api/planets/')
+    fetch(`https://swapi.co/api/planets/`)
       .then(response => response.json())
-      .then(data => this.setState({planets: data.results}));
+      .then(data => {
+        this.setState({planets: data.results});
+    })
+
   }
+
 
   async fetchFilms() {
     fetch('https://swapi.co/api/films/')
@@ -35,10 +39,10 @@ class App extends Component {
       .then(data => this.setState({films: data.results}));
   }
 
-  async fetchPeople() {
-    fetch('https://swapi.co/api/people/')
-      .then(response => response.json())
-      .then(data => this.setState({people: data.results}));
+  fetchPeople() {
+      fetch(`https://swapi.co/api/people/`)
+        .then(response => response.json())
+        .then(data => this.setState({people: data.results}));
   }
 
 
