@@ -8,7 +8,7 @@ class App extends Component {
     super();
 
     this.state = {
-      search: '',
+      searchField: '',
       planets: [],
       films: [],
       people: []
@@ -45,14 +45,19 @@ class App extends Component {
         .then(data => this.setState({people: data.results}));
   }
 
+  onSearchChange = (e) => {
+    console.log(e.target.value);
+    this.setState ({ searchField: e.target.value})
+  };
+
 
   render() {
-    const {search, planets, films, people} = this.state;
+    const {searchField, planets, films, people} = this.state;
 
 
     return (
       <div className="app">
-        <Header search={search}/>
+        <Header searchChange={this.onSearchChange}/>
         <Main
           planets={planets}
           films={films}

@@ -1,27 +1,26 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../styles/Search.css';
 
-export default class Search extends Component {
-
-  render() {
+const Search = ({searchField, searchChange}) => {
     return (
       <div className='search-main'>
-       <input
-         type='search'
-         placeholder='Search for planets, etc.'
-         id='search-main__bar'
-       />
+        <input
+          type='search'
+          placeholder='Search for planets, etc.'
+          id='search-main__bar'
+          onChange={searchChange}
+        />
 
         <button className='search-main__search__button'>Search</button>
 
         <fieldset className='search-main__search--filter'>
-          <legend>Filter By: </legend>
+          <legend>Filter By:</legend>
           <label htmlFor='movies' className='filter__items'>
-            <input type='checkbox' id='movies' name='filter' />
+            <input type='checkbox' id='movies' name='filter'/>
             Movies
           </label>
           <label htmlFor='planets' className='filter__items'>
-            <input type='checkbox'  id='planets' name='filter'/>
+            <input type='checkbox' id='planets' name='filter'/>
             Planets
           </label>
           <label htmlFor='characters' className='filter__items'>
@@ -32,5 +31,6 @@ export default class Search extends Component {
 
       </div>
     )
-  }
-}
+};
+
+export default Search;
