@@ -6,15 +6,18 @@
 	justify-content: space-between;
 }
 
+@media (max-width: 700px) {
+	.main-header {
+		justify-content: center;
+	}
+}
+
 .main-header__options {
 	align-self: flex-end;
 	margin: 1.2em;
 }
 
 .logo {
-	position: relative;
-	width: 18em;
+	width: 17em;
 	height: 10em;
-	margin-bottom: 20px;
-	padding-left: 5px;
 }

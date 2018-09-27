@@ -5,6 +5,12 @@ const Planets = ({ planets }) => {
   return (
     <section className='planets col-2'>
      <h3>Planets component</h3>
+      {
+        planets.map(planet => {
+          return <p>{planet.name}</p>
+        })
+
+      }
     </section>
   )
 };
