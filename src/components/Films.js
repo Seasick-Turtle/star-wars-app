@@ -4,13 +4,13 @@ import '../styles/Movies.css';
 const Films = ({ films }) => {
 
   return (
-    <section className='movies col-1'>
+    <section className='component movies col-1'>
       <h3>
         Films component
       </h3>
       {
         films.map(film => {
-          return <p>{film.title}</p>
+          return <p key={film.title}>{film.title}</p>
         })
       }
     </section>

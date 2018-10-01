@@ -1,5 +1,5 @@
 import React from 'react';
-import Search from '../containers/Search';
+import Nav from '../components/Nav';
 import Themes from './Themes';
 import '../styles/Header.css';
 import StarWarsLogo from '../styles/swapi-example-logo-transparent.png';
@@ -10,7 +10,7 @@ const Header = ({ searchChange }) => {
         <img src={StarWarsLogo} alt='gold star wars logo' className='logo'/>
       <div className='main-header__options'>
         <Themes />
-        <Search searchChange={searchChange}/>
+        <Nav searchChange={searchChange}/>
       </div>
     </header>
   )

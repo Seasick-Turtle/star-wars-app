@@ -6,24 +6,37 @@ import Films from '../components/Films';
 import Species from '../components/Species';
 import Starships from '../components/Starships';
 import Vehicles from '../components/Vehicles';
+import Results from '../components/Results';
 
 export default class Main extends Component {
 
   render() {
-    const { planets, films, people } = this.props;
-    return (
-      <main>
-        <div className='main'>
-          <Films films={films}/>
-          <Planets planets={planets}/>
-          <People people={people}/>
-        </div>
+    const { searchField, planets, films, people } = this.props;
+
+    if (searchField === '' ) {
+      return (
+        <main>
+          <div className='main'>
+            <Films films={films}/>
+            <Planets planets={planets}/>
+            <People people={people}/>
+          </div>
+          <div className='main'>
+            <Species />
+            <Starships />
+            <Vehicles />
+          </div>
+        </main>
+      )
+    } else {
+      return (
         <div>
-          <Species />
-          <Starships />
-          <Vehicles />
+          <Results searchField={searchField}/>
         </div>
-      </main>
-    )
+        )
+    }
+
+
+
   }
 }

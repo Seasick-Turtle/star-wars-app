@@ -7,7 +7,8 @@ const Planets = ({ planets }) => {
      <h3>Planets component</h3>
       {
         planets.map(planet => {
-          return <p>{planet.name}</p>
+          console.log(planet.name);
+          return <p key={planet.name}>{planet.name}</p>
         })
 
       }

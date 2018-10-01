@@ -9,7 +9,7 @@ const People = ({ people }) => {
       </h3>
       {
         people.map(person => {
-          return <p>{person.name}</p>
+          return <p key={person.name}>{person.name}</p>
         })
       }
     </section>
