@@ -8,11 +8,11 @@ const Films = ({ films }) => {
       <h3>
         Films component
       </h3>
-      {
-        films.map(film => {
-          return <p key={film.title}>{film.title}</p>
-        })
-      }
+      {/*{*/}
+        {/*films.map(film => {*/}
+          {/*return <p key={film.title}>{film.title}</p>*/}
+        {/*})*/}
+      {/*}*/}
     </section>
   )
 };

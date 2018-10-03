@@ -16,23 +16,23 @@ export default class Main extends Component {
     if (searchField === '' ) {
       return (
         <main>
-          <div className='main'>
+          <React.Fragment className='main'>
             <Films films={films}/>
             <Planets planets={planets}/>
             <People people={people}/>
-          </div>
-          <div className='main'>
+          </React.Fragment>
+          <React.Fragment className='main'>
             <Species />
             <Starships />
             <Vehicles />
-          </div>
+          </React.Fragment>
         </main>
       )
     } else {
       return (
-        <div>
+        <React.Fragment>
           <Results searchField={searchField}/>
-        </div>
+        </React.Fragment>
         )
     }
 

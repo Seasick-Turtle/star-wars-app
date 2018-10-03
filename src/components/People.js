@@ -7,11 +7,11 @@ const People = ({ people }) => {
       <h3>
         People component
       </h3>
-      {
-        people.map(person => {
-          return <p key={person.name}>{person.name}</p>
-        })
-      }
+      {/*{*/}
+        {/*people.map(person => {*/}
+          {/*return <p key={person.name}>{person.name}</p>*/}
+        {/*})*/}
+      {/*}*/}
     </section>
   )
 };
