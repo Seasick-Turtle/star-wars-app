@@ -3,7 +3,7 @@
 	background-color: #000;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
+	justify-content: center;
 }
 
 @media (max-width: 700px) {
@@ -13,11 +13,13 @@
 }
 
 .main-header__options {
-	align-self: flex-end;
+	align-self: center;
+	width: 20em;
 	margin: 1.2em;
 }
 
 .logo {
+	justify-content: center;
 	width: 17em;
 	height: 10em;
 }

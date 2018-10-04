@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Header from '../components/Header';
 import Main from '../containers/Main';
 import '../styles/App.css';
@@ -17,11 +17,10 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.fetchPlanets();
-    this.fetchPeople();
-    this.fetchFilms();
+    // this.fetchPlanets();
+    // this.fetchPeople();
+    // this.fetchFilms();
   }
-
 
   async fetchPlanets() {
     fetch(`https://swapi.co/api/planets/`)
@@ -32,14 +31,13 @@ class App extends Component {
 
   }
 
-
-  async fetchFilms() {
+   async fetchFilms() {
     fetch('https://swapi.co/api/films/')
       .then(response => response.json())
       .then(data => this.setState({films: data.results}));
   }
 
-  fetchPeople() {
+   async fetchPeople() {
       fetch(`https://swapi.co/api/people/`)
         .then(response => response.json())
         .then(data => this.setState({people: data.results}));
@@ -47,7 +45,7 @@ class App extends Component {
 
   onSearchChange = (e) => {
     console.log(e.target.value);
-    this.setState ({ searchField: e.target.value})
+    this.setState ({ searchField: e.target.value });
   };
 
 
@@ -59,6 +57,7 @@ class App extends Component {
       <div className="app">
         <Header searchChange={this.onSearchChange}/>
         <Main
+          searchField={searchField}
           planets={planets}
           films={films}
           people={people}
