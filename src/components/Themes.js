@@ -3,7 +3,7 @@ import React from 'react';
 const Themes = () => {
   return (
     <React.Fragment>
-      <li>Themes</li>
+      <li>Themes (coming soon)</li>
     </React.Fragment>
   )
 };

@@ -1,21 +1,32 @@
 import React from 'react';
-import Themes from '../components/Themes';
-import { FILMS_NAV } from '../Constants';
+import Search from '../containers/Search';
+// import Themes from '../components/Themes';
+import MenuItem from '../components/MenuItem';
+import {
+  TPM,
+  AOTC,
+  ROTS,
+  ANH,
+  TESB,
+  ROTJ,
+  TFA
+} from '../Constants';
 import '../styles/Nav.css';
 
 const Nav = () => {
   return (
     <nav className='nav'>
       <div className='nav__item nav__item--collapsible-menu'>
-        {
-          FILMS_NAV.map((film, index )=> {
-            let filmIndex = index + 1;
-            console.log(filmIndex);
-            return <li className='nav__items' key={filmIndex}><a key={filmIndex}>{film}</a></li>
-          })
-        }
-      <Themes />
+        <li className='nav__items'><MenuItem film={TPM}/></li>
+        <li className='nav__items'><MenuItem film={AOTC}/></li>
+        <li className='nav__items'><MenuItem film={ROTS}/></li>
+        <li className='nav__items'><MenuItem film={ANH}/></li>
+        <li className='nav__items'><MenuItem film={TESB}/></li>
+        <li className='nav__items'><MenuItem film={ROTJ}/></li>
+        <li className='nav__items'><MenuItem film={TFA}/></li>
+
       </div>
+      <Search />
     </nav>
 
   )

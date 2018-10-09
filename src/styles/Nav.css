@@ -6,8 +6,8 @@
 
 .nav__item {
 	display: flex;
-	width: 90%;
-	justify-content: space-between;
+	width: 100%;
+	justify-content: space-evenly;
 	margin: .5em 2em;
 	list-style: none;
 }

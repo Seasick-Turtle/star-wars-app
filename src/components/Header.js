@@ -8,9 +8,9 @@ const Header = ({ searchChange }) => {
   return (
     <header className='main-header'>
         <img src={StarWarsLogo} alt='gold star wars logo' className='logo'/>
-      <div className='main-header__options'>
-        <Search searchChange={searchChange}/>
-      </div>
+      {/*<div className='main-header__options'>*/}
+        {/*/!*<Search searchChange={searchChange}/>*!/*/}
+      {/*</div>*/}
       <Nav />
     </header>
   )
