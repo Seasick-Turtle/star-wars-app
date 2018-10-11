@@ -1,6 +1,7 @@
 .menuItem__main--dropdown {
 	text-decoration: none;
 	color: white;
+	cursor: pointer;
 }
 
 .menuItem__main--content a {
@@ -20,6 +21,6 @@
 	z-index: 1;
 }
 
-.menuItem__main--dropdown:hover, .menuItem__main--dropdown:focus .menuItem__main--content {
+.menuItem__main--dropdown:hover .menuItem__main--content {
 	display: block;
 }
