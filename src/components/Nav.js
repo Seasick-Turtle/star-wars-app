@@ -16,7 +16,7 @@ import '../styles/Nav.css';
 const Nav = () => {
   return (
     <nav className='nav'>
-      <div className='nav__item nav__item--collapsible-menu'>
+      <ul className='nav__item nav__item--collapsible-menu'>
         <li className='nav__items'><MenuItem film={TPM}/></li>
         <li className='nav__items'><MenuItem film={AOTC}/></li>
         <li className='nav__items'><MenuItem film={ROTS}/></li>
@@ -24,8 +24,7 @@ const Nav = () => {
         <li className='nav__items'><MenuItem film={TESB}/></li>
         <li className='nav__items'><MenuItem film={ROTJ}/></li>
         <li className='nav__items'><MenuItem film={TFA}/></li>
-
-      </div>
+      </ul>
       <Search />
     </nav>
 

@@ -1,4 +1,25 @@
-.filmTitle {
+.menuItem__main--dropdown {
 	text-decoration: none;
 	color: white;
+}
+
+.menuItem__main--content a {
+	float: none;
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+	text-align: left;
+}
+
+.menuItem__main--content {
+	display: none;
+	background-color: #f9f9f9;
+	position: absolute;
+	min-width: 2em;
+	z-index: 1;
+}
+
+.menuItem__main--dropdown:hover, .menuItem__main--dropdown:focus .menuItem__main--content {
+	display: block;
 }
