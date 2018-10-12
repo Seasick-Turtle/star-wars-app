@@ -7,7 +7,7 @@ const Header = ({ searchChange }) => {
   return (
     <header className='main-header'>
         <img src={StarWarsLogo} alt='gold star wars logo' className='logo'/>
-      <Nav />
+      <Nav searchChange={searchChange} />
     </header>
   )
 };

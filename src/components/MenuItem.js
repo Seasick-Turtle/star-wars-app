@@ -15,7 +15,7 @@ export default class MenuItem extends Component {
     const { film } = this.props;
 
     return (
-      <div className='menuItem__main--dropdown filmTitle'>
+      <span className='menuItem__main--dropdown filmTitle'>
         {film.title}
         <div className='menuItem__main--content'>
           <a href='#'>People</a>
@@ -24,7 +24,7 @@ export default class MenuItem extends Component {
           <a href='#'>Starships</a>
           <a href='#'>Vehicles</a>
         </div>
-      </div>
+      </span>
     )
   }
 

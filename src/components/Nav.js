@@ -13,7 +13,7 @@ import {
 } from '../Constants';
 import '../styles/Nav.css';
 
-const Nav = () => {
+const Nav = ({ searchChange }) => {
   return (
     <nav className='nav'>
       <ul className='nav__item nav__item--collapsible-menu'>
@@ -25,7 +25,7 @@ const Nav = () => {
         <li className='nav__items'><MenuItem film={ROTJ}/></li>
         <li className='nav__items'><MenuItem film={TFA}/></li>
       </ul>
-      <Search />
+      <Search searchChange={searchChange} />
     </nav>
 
   )

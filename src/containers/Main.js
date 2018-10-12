@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+// import { BrowserRouter as Route, Route, Link } from 'react-router-dom';
 import '../styles/Main.css';
+import Home from '../components/Home';
 import Planets from '../components/Planets';
 import People from '../components/People';
 import Films from '../components/Films';
@@ -17,6 +19,7 @@ export default class Main extends Component {
       return (
         <main>
           <React.Fragment className='main'>
+            <Home />
             <Films films={films}/>
             <Planets planets={planets}/>
             <People people={people}/>
