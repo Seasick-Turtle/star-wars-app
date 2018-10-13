@@ -15,8 +15,8 @@ import '../styles/Nav.css';
 
 const Nav = ({ searchChange }) => {
   return (
-    <nav className='nav'>
-      <ul className='nav__item nav__item--collapsible-menu'>
+    <nav className='nav nav--collapsible'>
+      <ul className='nav__item'>
         <li className='nav__items'><MenuItem film={TPM}/></li>
         <li className='nav__items'><MenuItem film={AOTC}/></li>
         <li className='nav__items'><MenuItem film={ROTS}/></li>
