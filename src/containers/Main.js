@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+// import { BrowserRouter as Route, Route, Link } from 'react-router-dom';
 import '../styles/Main.css';
+import Home from '../components/Home';
 import Planets from '../components/Planets';
 import People from '../components/People';
 import Films from '../components/Films';
@@ -16,16 +18,17 @@ export default class Main extends Component {
     if (searchField === '' ) {
       return (
         <main>
-          <React.Fragment className='main'>
+          <Home />
+          <div className='main'>
             <Films films={films}/>
             <Planets planets={planets}/>
             <People people={people}/>
-          </React.Fragment>
-          <React.Fragment className='main'>
+          </div>
+          <div className='main'>
             <Species />
             <Starships />
             <Vehicles />
-          </React.Fragment>
+          </div>
         </main>
       )
     } else {
