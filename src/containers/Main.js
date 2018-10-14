@@ -18,17 +18,17 @@ export default class Main extends Component {
     if (searchField === '' ) {
       return (
         <main>
-          <React.Fragment className='main'>
-            <Home />
+          <Home />
+          <div className='main'>
             <Films films={films}/>
             <Planets planets={planets}/>
             <People people={people}/>
-          </React.Fragment>
-          <React.Fragment className='main'>
+          </div>
+          <div className='main'>
             <Species />
             <Starships />
             <Vehicles />
-          </React.Fragment>
+          </div>
         </main>
       )
     } else {

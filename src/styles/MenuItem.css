@@ -1,10 +1,17 @@
-.menuItem__main--dropdown {
+.menuItem__filmTitle {
 	text-decoration: none;
 	color: white;
+}
+
+.menuItem__main--dropdown {
 	cursor: pointer;
 }
 
-.menuItem__main--content a {
+.menuItem__main-item {
+	height: 3em;
+}
+
+.menuItem__main-item a{
 	float: none;
 	color: black;
 	padding: 12px 16px;
@@ -13,14 +20,56 @@
 	text-align: left;
 }
 
-.menuItem__main--content {
+.menuItem__main-item:hover {
+	background-color: #d2d2d2;
+}
+
+.menuItem__main-content {
+	border: 2px solid black;
 	display: none;
 	background-color: #f9f9f9;
 	position: absolute;
 	min-width: 2em;
 	z-index: 1;
+	margin: 0;
+	padding: 0;
+	list-style: none;
 }
 
-.menuItem__main--dropdown:hover .menuItem__main--content {
+.menuItem__main--dropdown:hover .menuItem__main-content {
 	display: block;
+}
+
+.menuItem__submenu {
+	position: relative;
+	padding: 0;
+	display: none;
+	list-style: none;
+	background-color: #f9f9f9;
+}
+
+.menuItem__main-content .menuItem__submenu {
+	left: 100%;
+	bottom: 100%;
+	margin-top: -1.3px;
+}
+
+.mainItem__submenu-content {
+	display: none;
+	position: absolute;
+	min-width: 2em;
+	z-index: 1;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.menuItem__main-item:hover .menuItem__submenu {
+	display: block;
+	border: 1px solid #343434;
+}
+
+
+.menuItem__submenu-item:hover {
+	background-color: #d2d2d2;
 }

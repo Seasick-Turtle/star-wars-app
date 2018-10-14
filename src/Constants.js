@@ -1,7 +1,7 @@
 export const TPM = {
   title: 'The Phantom Menace',
   episode_id: 1,
-  characters: [
+  people: [
     { id: 2, name: 'C-3P0'},
     { id: 3, name: 'R2-D2'},
     { id: 10, name: 'Obi-Wan Kenobi'},
@@ -87,7 +87,7 @@ export const TPM = {
 export const AOTC = {
   title: 'Attack of the Clones',
   episode_id: 2,
-  characters: [
+  people: [
     { id: 2, name: 'C-3P0'},
     { id: 3, name: 'R2-D2'},
     { id: 6, name: 'Owen Lars'},
@@ -183,7 +183,7 @@ export const AOTC = {
 export const ROTS = {
   title: 'Revenge of the Sith',
   episode_id: 3,
-  characters: [
+  people: [
     { id: 1, name: 'Luke Skywalker'},
     { id: 2, name: 'C-3P0'},
     { id: 3, name: 'R2-D2'},
@@ -291,7 +291,7 @@ export const ROTS = {
 export const ANH = {
   title: 'A New Hope',
   episode_id: 4,
-  characters: [
+  people: [
     { id: 1, name: 'Luke Skywalker'},
     { id: 2, name: 'C-3P0'},
     { id: 3, name: 'R2-D2'},
@@ -347,7 +347,7 @@ export const ANH = {
 export const TESB = {
   title: 'The Empire Strikes Back',
   episode_id: 5,
-  characters: [
+  people: [
     { id: 1, name: 'Luke Skywalker'},
     { id: 2, name: 'C-3P0'},
     { id: 3, name: 'R2-D2'},
@@ -403,7 +403,7 @@ export const TESB = {
 export const ROTJ = {
   title: 'Return of the Jedi',
   episode_id: 6,
-  characters: [
+  people: [
     { id: 1, name: 'Luke Skywalker'},
     { id: 2, name: 'C-3P0'},
     { id: 3, name: 'R2-D2'},
@@ -473,7 +473,7 @@ export const ROTJ = {
 export const TFA = {
   title: 'The Force Awakens',
   episode_id: 7,
-  characters: [
+  people: [
     { id: 1, name: 'Luke Skywalker'},
     { id: 3, name: 'R2-D2'},
     { id: 5, name: 'Leia Organa'},

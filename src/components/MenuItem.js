@@ -14,16 +14,30 @@ export default class MenuItem extends Component {
   render() {
     const { film } = this.props;
 
+    console.log(film.people.length);
+
+
     return (
-      <div className='menuItem__main--dropdown filmTitle'>
-        {film.title}
-        <div className='menuItem__main--content'>
-          <a href='#'>People</a>
-          <a href='#'>Planets</a>
-          <a href='#'>Species</a>
-          <a href='#'>Starships</a>
-          <a href='#'>Vehicles</a>
-        </div>
+      <div className='menuItem__main--dropdown'>
+        <a className='menuItem__filmTitle' href='#'>{film.title}</a>
+        <ul className='menuItem__main-content'>
+          <li className='menuItem__main-item'>
+            <a href='#'>
+            People
+            </a>
+            <ul className='menuItem__submenu'>
+              <li className='menuItem__submenu-content'>{film.people.map((person) => {
+                return <a className='menuItem__submenu-item' key={person.id} href='#'>{person.name}</a>
+              })}</li>
+            </ul>
+          </li>
+          <li className='menuItem__main-item'>
+            <a href='#'>Planets</a>
+          </li>
+          <li className='menuItem__main-item'><a href='#'>Species</a> </li>
+          <li className='menuItem__main-item'><a href='#'>Starships</a> </li>
+          <li className='menuItem__main-item'><a href='#'>Vehicles</a> </li>
+        </ul>
       </div>
     )
   }
