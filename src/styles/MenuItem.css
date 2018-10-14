@@ -29,7 +29,7 @@
 	display: none;
 	background-color: #f9f9f9;
 	position: absolute;
-	min-width: 2em;
+	width: 10em;
 	z-index: 1;
 	margin: 0;
 	padding: 0;

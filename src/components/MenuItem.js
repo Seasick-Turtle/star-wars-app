@@ -10,12 +10,17 @@ export default class MenuItem extends Component {
     }
   }
 
+  displayItems = (film, category ) => {
+    return (
+      <li className='menuItem__submenu-content'>{film[category].map((item) => {
+        return <a className='menuItem__submenu-item' key={item.id} href='#'>{item.name}</a>
+      })}</li>
+    )
+  };
+
 
   render() {
     const { film } = this.props;
-
-    console.log(film.people.length);
-
 
     return (
       <div className='menuItem__main--dropdown'>
@@ -26,20 +31,40 @@ export default class MenuItem extends Component {
             People
             </a>
             <ul className='menuItem__submenu'>
-              <li className='menuItem__submenu-content'>{film.people.map((person) => {
-                return <a className='menuItem__submenu-item' key={person.id} href='#'>{person.name}</a>
-              })}</li>
+              {this.displayItems(film, 'people')}
             </ul>
           </li>
           <li className='menuItem__main-item'>
             <a href='#'>Planets</a>
+            <ul className='menuItem__submenu'>
+              {this.displayItems(film, 'planets')}
+            </ul>
           </li>
-          <li className='menuItem__main-item'><a href='#'>Species</a> </li>
-          <li className='menuItem__main-item'><a href='#'>Starships</a> </li>
-          <li className='menuItem__main-item'><a href='#'>Vehicles</a> </li>
+          <li className='menuItem__main-item'>
+            <a href='#'>Species</a>
+            <ul className='menuItem__submenu'>
+              {this.displayItems(film, 'species')}
+            </ul>
+          </li>
+          <li className='menuItem__main-item'>
+            <a href='#'>Starships</a>
+            <ul className='menuItem__submenu'>
+              {this.displayItems(film, 'starships')}
+            </ul>
+          </li>
+          {
+            (film.title === 'The Force Awakens' ? '' :
+             (
+              <li className='menuItem__main-item'>
+                <a href='#'>Vehicles</a>
+              <ul className='menuItem__submenu'>
+                {this.displayItems(film, 'vehicles')}
+              </ul>
+              </li>
+            ))
+          }
         </ul>
       </div>
     )
   }
-
 };

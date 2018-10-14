@@ -17,13 +17,27 @@ const Nav = ({ searchChange }) => {
   return (
     <nav className='nav nav--collapsible'>
       <ul className='nav__item'>
-        <li className='nav__items'><MenuItem film={TPM}/></li>
-        <li className='nav__items'><MenuItem film={AOTC}/></li>
-        <li className='nav__items'><MenuItem film={ROTS}/></li>
-        <li className='nav__items'><MenuItem film={ANH}/></li>
-        <li className='nav__items'><MenuItem film={TESB}/></li>
-        <li className='nav__items'><MenuItem film={ROTJ}/></li>
-        <li className='nav__items'><MenuItem film={TFA}/></li>
+        <li className='nav__items'>
+          <MenuItem film={TPM}/>
+        </li>
+        <li className='nav__items'>
+          <MenuItem film={AOTC}/>
+        </li>
+        <li className='nav__items'>
+          <MenuItem film={ROTS}/>
+        </li>
+        <li className='nav__items'>
+          <MenuItem film={ANH}/>
+        </li>
+        <li className='nav__items'>
+          <MenuItem film={TESB}/>
+        </li>
+        <li className='nav__items'>
+          <MenuItem film={ROTJ}/>
+        </li>
+        <li className='nav__items'>
+          <MenuItem film={TFA}/>
+        </li>
       </ul>
       <Search searchChange={searchChange} />
     </nav>
