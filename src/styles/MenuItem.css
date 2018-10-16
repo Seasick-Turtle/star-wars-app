@@ -20,7 +20,7 @@
 	text-align: left;
 }
 
-.menuItem__main-item:hover {
+.menuItem__main-item:hover, .menuItem__submenu-seeMore:hover {
 	background-color: #d2d2d2;
 }
 
@@ -55,7 +55,6 @@
 }
 
 .mainItem__submenu-content {
-	display: none;
 	position: absolute;
 	min-width: 2em;
 	z-index: 1;
