@@ -1,0 +1,23 @@
+.home-main {
+	display: grid;
+	grid-template-columns: auto;
+	grid-template-rows: auto;
+	grid-template-areas:
+		"header header"
+		"main main";
+	margin-top: 1.5em;
+	margin-bottom: 1.5em;
+	background-color: white;
+	border: 1px solid black;
+	border-radius: .2em;
+}
+
+.home-main__title {
+	grid-area: header;
+	justify-self: center;
+}
+
+.home__films {
+	align-self: center;
+	margin: 2em;
+}

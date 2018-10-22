@@ -17,18 +17,18 @@ export default class Main extends Component {
 
     if (searchField === '' ) {
       return (
-        <main>
+        <main className='main'>
           <Home />
-          <div className='main'>
-            <Films films={films}/>
-            <Planets planets={planets}/>
-            <People people={people}/>
-          </div>
-          <div className='main'>
-            <Species />
-            <Starships />
-            <Vehicles />
-          </div>
+          {/*<div >*/}
+            {/*<Films films={films}/>*/}
+            {/*<Planets planets={planets}/>*/}
+            {/*<People people={people}/>*/}
+          {/*</div>*/}
+          {/*<div className='main'>*/}
+            {/*<Species />*/}
+            {/*<Starships />*/}
+            {/*<Vehicles />*/}
+          {/*</div>*/}
         </main>
       )
     } else {
