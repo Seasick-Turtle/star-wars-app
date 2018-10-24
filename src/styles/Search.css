@@ -1,3 +1,7 @@
+:root {
+	--search-height: 1.5em;
+}
+
 .search-main {
 	display: inline-flex;
 	justify-content: center;
@@ -18,6 +22,10 @@
 .search-main__search__button:hover {
 	cursor: pointer;
 	background-color: #bfbfbf;
+}
+
+.search-main__search__button, #search-main__bar {
+	height: var(--search-height);
 }
 
 #search-main__bar {

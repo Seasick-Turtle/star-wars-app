@@ -17,9 +17,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    //
-    // this.fetchPeople();
-    // this.fetchFilms();
+
   }
 
   async fetchPlanets() {
