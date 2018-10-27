@@ -53,6 +53,7 @@ class App extends Component {
 
     return (
       <div className="app">
+        <React.StrictMode>
         <Header searchChange={this.onSearchChange}/>
         <Main
           searchField={searchField}
@@ -60,6 +61,7 @@ class App extends Component {
           films={films}
           people={people}
         />
+        </React.StrictMode>
       </div>
     );
 

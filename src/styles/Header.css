@@ -4,13 +4,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	width: 85%;
-}
-
-@media (max-width: 700px) {
-	.main-header {
-		justify-content: center;
-	}
+	width: 100%;
 }
 
 .main-header__options {
