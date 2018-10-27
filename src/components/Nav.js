@@ -13,6 +13,7 @@ import {
 } from '../Constants';
 import '../styles/Nav.css';
 
+// imports MenuItem in order to display the Navbar items
 const Nav = ({ searchChange }) => {
   return (
     <nav className='nav nav--collapsible'>

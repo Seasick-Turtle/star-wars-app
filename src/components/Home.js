@@ -5,6 +5,7 @@ export default class Home extends Component {
   constructor() {
     super();
 
+    // create local state for randomized values
     this.state = {
       films: {},
       people: {},
@@ -25,6 +26,10 @@ export default class Home extends Component {
 
   retrieveSection = (section) => {
 
+    /*
+     * function used to generate a random value
+     * between 1 and the max number in each category
+     */
     function getRandomSection (section)  {
 
       const MIN = 1;
@@ -57,6 +62,12 @@ export default class Home extends Component {
     let sectionNum = getRandomSection(section);
     const url = `https://swapi.co/api/${section}/${sectionNum}`;
 
+    /*
+     * fetches data from SWAPI with random number for
+     * a particular category, if successful push to state
+     * if the response status is anything other than ok
+     * try again until successful
+     */
     const fetchData = async (url, section) => {
       try {
         const response = await fetch(url);

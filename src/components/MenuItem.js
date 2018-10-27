@@ -11,6 +11,11 @@ export default class MenuItem extends Component {
 
   }
 
+  /*
+  function accepts an array, maps over it and returns
+  what is used for the nested drop down menu
+  TODO: display item in Main.js when user clicks on item
+   */
   displayItem = (itemsArray) => {
 
     return (
@@ -22,6 +27,13 @@ export default class MenuItem extends Component {
     )
   };
 
+  /*
+  function used to limit the amount of items that
+  will be displayed when a user checks out a particular
+  category (people, planets, etc)
+
+  TODO: clicking on see more takes user to index page
+   */
   limitItems = (film, category) => {
     const limitedList = film[category].splice(0,4);
 
@@ -34,6 +46,10 @@ export default class MenuItem extends Component {
 
   };
 
+  /*
+  function calls limitItems if needed, otherwise
+  display items from itemList array
+   */
   displayItems = (film, category) => {
     const itemList = film[category];
 
@@ -57,12 +73,21 @@ export default class MenuItem extends Component {
         <ul className='menuItem__main-content'>
           {
             categoryTitles.map((category) => {
+              // To prevent issues, lowercase each item
               const lowerCaseTitle = category.toLowerCase();
 
+              // prevents empty categories from showing up
               if (film[lowerCaseTitle].length === 0) {
                 return ''
               }
 
+              /*
+              returns dropdown menu with each category name
+              (people, planets, vehicles, starhsips, species)
+              along with calling this.displayItems in order to create
+              nested dropdown menu with more specific items such as
+              Luke Skywalker, Droids, Dagobah, etc. from that particular film
+               */
               return (
                 <li className='menuItem__main-item' key={category}>
                   <a href='#'>
