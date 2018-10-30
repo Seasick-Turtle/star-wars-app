@@ -11,7 +11,8 @@ export default class Home extends Component {
       people: {},
       planets: {},
       species: {},
-      vehicles: {}
+      vehicles: {},
+      starships: {}
     }
 
   }
@@ -22,6 +23,7 @@ export default class Home extends Component {
     this.retrieveSection('planets');
     this.retrieveSection('species');
     this.retrieveSection('vehicles');
+    this.retrieveSection('starships');
   }
 
   retrieveSection = (section) => {
@@ -50,7 +52,10 @@ export default class Home extends Component {
           break;
         case 'vehicles':
           max = 39;
-            break;
+          break;
+        case 'starships':
+          max = 37;
+          break;
         default:
           break;
       }
@@ -102,7 +107,7 @@ export default class Home extends Component {
   };
 
   render() {
-    const sections = ['Films', 'People', 'Planets', 'Species', 'Vehicles'];
+    const sections = ['Films', 'People', 'Planets', 'Species', 'Vehicles', 'Starships'];
 
     return (
       <div className='home-main'>

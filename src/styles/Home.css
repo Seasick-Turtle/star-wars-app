@@ -26,13 +26,13 @@
 	}
 }
 
-@media (min-width: 821px) {
-	.home__sections:last-child {
-		text-align: center;
-		grid-column: 1 / span 2;
-		align-self: center;
-	}
-}
+/*@media (min-width: 821px) {*/
+	/*.home__sections:last-child {*/
+		/*text-align: center;*/
+		/*grid-column: 1 / span 2;*/
+		/*align-self: center;*/
+	/*}*/
+/*}*/
 
 .home-main__title {
 	grid-area: header;
