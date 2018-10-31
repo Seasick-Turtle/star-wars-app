@@ -18,16 +18,16 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
-    this.retrieveSection('films');
-    this.retrieveSection('people');
-    this.retrieveSection('planets');
-    this.retrieveSection('species');
-    this.retrieveSection('vehicles');
-    this.retrieveSection('starships');
+    this.retrieveAllSections(['films', 'people', 'planets', 'species', 'vehicles', 'starships']);
+  }
+
+  retrieveAllSections(sections) {
+    for (let i = 0; i < sections.length; i++) {
+      this.retrieveSection(sections[i]);
+    }
   }
 
   retrieveSection = (section) => {
-
     /*
      * function used to generate a random value
      * between 1 and the max number in each category
@@ -100,9 +100,22 @@ export default class Home extends Component {
 
   displaySection = (section) => {
     return (
-      <div>
-        <h2>{this.state[section].title || this.state[section].name}</h2>
-      </div>
+      <React.Fragment>
+        <h3>{this.state[section].title || this.state[section].name}</h3>
+        <ul>
+          <li>
+            {
+              this.state[section].episode_id
+          || this.state[section].model
+          || this.state[section].rotation_period
+          || this.state[section].classification
+          || this.state[section].birth_year
+            }</li>
+          <li></li>
+          <li></li>
+        </ul>
+        <a href='#'>More Info</a>
+      </React.Fragment>
     )
   };
 
@@ -116,10 +129,10 @@ export default class Home extends Component {
           sections.map((section) => {
             return (
               <div key={section} className='home__sections'>
-                <h3>{section}</h3>
-                <div>
+                <h2>{section}</h2>
+                <React.Fragment>
                   {this.displaySection(section.toLowerCase())}
-                </div>
+                </React.Fragment>
               </div>
             )
 
