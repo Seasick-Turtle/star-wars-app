@@ -99,20 +99,135 @@ export default class Home extends Component {
   };
 
   displaySection = (section) => {
+    const displayListItems = (section) => {
+      switch (section) {
+        case 'films':
+          return (
+            <React.Fragment>
+              {console.time()}
+              <li>
+                { displayListItem(section, 'Directed by', 'director')}
+              </li>
+              <li>
+                { displayListItem(section, 'Produced by', 'producer')}
+              </li>
+              <li>
+                { displayListItem(section, 'Released', 'release_date')}
+              </li>
+              {console.timeEnd()}
+            </React.Fragment>
+          );
+        case 'vehicles':
+          return (
+            <React.Fragment>
+              {console.time()}
+              <li>
+                { displayListItem(section, 'Model', 'model')}
+              </li>
+              <li>
+                { displayListItem(section, 'Manufacturer', 'manufacturer')}
+              </li>
+              <li>
+                { displayListItem(section, 'Crew', 'crew')}
+              </li>
+              {console.timeEnd()}
+            </React.Fragment>
+          );
+        case 'starships':
+          return (
+            <React.Fragment>
+              {console.time()}
+              <li>
+                { displayListItem(section, 'Model', 'model')}
+              </li>
+              <li>
+                { displayListItem(section, 'Manufacturer', 'manufacturer')}
+              </li>
+              <li>
+                { displayListItem(section, 'Crew', 'crew')}
+              </li>
+              {console.timeEnd()}
+            </React.Fragment>
+          );
+        case 'planets':
+          return (
+            <React.Fragment>
+              <li>
+                { displayListItem(section, 'Climate', 'climate')}
+              </li>
+              <li>
+                { displayListItem(section, 'Terrain', 'terrain')}
+              </li>
+              <li>
+                { displayListItem(section, 'Population', 'population')}
+              </li>
+            </React.Fragment>
+          );
+        case 'species':
+          return (
+            <React.Fragment>
+              <li>
+                { displayListItem(section, 'Classification', 'episode_id')}
+              </li>
+              <li>
+                { displayListItem(section, 'Average Lifespan', 'episode_id')}
+              </li>
+              <li>
+                { displayListItem(section, 'Homeworld', 'homeworld')}
+              </li>
+            </React.Fragment>
+          );
+        case 'people':
+          return (
+            <React.Fragment>
+              <li>
+                { displayListItem(section, 'Birth Year', 'birth_year')}
+              </li>
+              <li>
+                { displayListItem(section, 'Homeworld', 'homeworld')}
+              </li>
+              <li>
+                { displayListItem(section, 'Gender', 'gender')}
+              </li>
+            </React.Fragment>
+          );
+        default:
+          break;
+      }
+    };
+
+    const displayListItem = (section, detail, property) => {
+      // const fetchProperty = async (section, property) => {
+      //   const response = await fetch(property);
+      //   const data = await response.json();
+      //
+      //   this.setState({
+      //     [section]: data[property]
+      //   })
+      // };
+      //
+      // if (detail === 'Homeworld') {
+      //   fetchProperty(property);
+      // }
+      //
+      // // if (property === 'homeworld') {
+      // //   return fetchProperty(property);
+      // // }
+
+      return (
+        <React.Fragment>
+          { `${detail}: ${this.state[section][property]}` }
+        </React.Fragment>
+      );
+    };
+
+
+
     return (
       <React.Fragment>
         <h3>{this.state[section].title || this.state[section].name}</h3>
         <ul>
-          <li>
-            {
-              this.state[section].episode_id
-          || this.state[section].model
-          || this.state[section].rotation_period
-          || this.state[section].classification
-          || this.state[section].birth_year
-            }</li>
-          <li></li>
-          <li></li>
+          {displayListItems(section)}
         </ul>
         <a href='#'>More Info</a>
       </React.Fragment>
