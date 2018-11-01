@@ -11,21 +11,23 @@ export default class Home extends Component {
       people: {},
       planets: {},
       species: {},
-      vehicles: {}
+      vehicles: {},
+      starships: {}
     }
 
   }
 
   componentDidMount() {
-    this.retrieveSection('films');
-    this.retrieveSection('people');
-    this.retrieveSection('planets');
-    this.retrieveSection('species');
-    this.retrieveSection('vehicles');
+    this.retrieveAllSections(['films', 'people', 'planets', 'species', 'vehicles', 'starships']);
+  }
+
+  retrieveAllSections(sections) {
+    for (let i = 0; i < sections.length; i++) {
+      this.retrieveSection(sections[i]);
+    }
   }
 
   retrieveSection = (section) => {
-
     /*
      * function used to generate a random value
      * between 1 and the max number in each category
@@ -50,7 +52,10 @@ export default class Home extends Component {
           break;
         case 'vehicles':
           max = 39;
-            break;
+          break;
+        case 'starships':
+          max = 37;
+          break;
         default:
           break;
       }
@@ -94,15 +99,143 @@ export default class Home extends Component {
   };
 
   displaySection = (section) => {
+    const displayListItems = (section) => {
+      switch (section) {
+        case 'films':
+          return (
+            <React.Fragment>
+              {console.time()}
+              <li>
+                { displayListItem(section, 'Directed by', 'director')}
+              </li>
+              <li>
+                { displayListItem(section, 'Produced by', 'producer')}
+              </li>
+              <li>
+                { displayListItem(section, 'Released', 'release_date')}
+              </li>
+              {console.timeEnd()}
+            </React.Fragment>
+          );
+        case 'vehicles':
+          return (
+            <React.Fragment>
+              {console.time()}
+              <li>
+                { displayListItem(section, 'Model', 'model')}
+              </li>
+              <li>
+                { displayListItem(section, 'Manufacturer', 'manufacturer')}
+              </li>
+              <li>
+                { displayListItem(section, 'Crew', 'crew')}
+              </li>
+              {console.timeEnd()}
+            </React.Fragment>
+          );
+        case 'starships':
+          return (
+            <React.Fragment>
+              {console.time()}
+              <li>
+                { displayListItem(section, 'Model', 'model')}
+              </li>
+              <li>
+                { displayListItem(section, 'Manufacturer', 'manufacturer')}
+              </li>
+              <li>
+                { displayListItem(section, 'Crew', 'crew')}
+              </li>
+              {console.timeEnd()}
+            </React.Fragment>
+          );
+        case 'planets':
+          return (
+            <React.Fragment>
+              <li>
+                { displayListItem(section, 'Climate', 'climate')}
+              </li>
+              <li>
+                { displayListItem(section, 'Terrain', 'terrain')}
+              </li>
+              <li>
+                { displayListItem(section, 'Population', 'population')}
+              </li>
+            </React.Fragment>
+          );
+        case 'species':
+          return (
+            <React.Fragment>
+              <li>
+                { displayListItem(section, 'Classification', 'episode_id')}
+              </li>
+              <li>
+                { displayListItem(section, 'Average Lifespan', 'episode_id')}
+              </li>
+              <li>
+                { displayListItem(section, 'Homeworld', 'homeworld')}
+              </li>
+            </React.Fragment>
+          );
+        case 'people':
+          return (
+            <React.Fragment>
+              <li>
+                { displayListItem(section, 'Birth Year', 'birth_year')}
+              </li>
+              <li>
+                { displayListItem(section, 'Homeworld', 'homeworld')}
+              </li>
+              <li>
+                { displayListItem(section, 'Gender', 'gender')}
+              </li>
+            </React.Fragment>
+          );
+        default:
+          break;
+      }
+    };
+
+    const displayListItem = (section, detail, property) => {
+      // const fetchProperty = async (section, property) => {
+      //   const response = await fetch(property);
+      //   const data = await response.json();
+      //
+      //   this.setState({
+      //     [section]: data[property]
+      //   })
+      // };
+      //
+      // if (detail === 'Homeworld') {
+      //   fetchProperty(property);
+      // }
+      //
+      // // if (property === 'homeworld') {
+      // //   return fetchProperty(property);
+      // // }
+
+      return (
+        <React.Fragment>
+          { `${detail}: ${this.state[section][property]}` }
+        </React.Fragment>
+      );
+    };
+
+
+
     return (
-      <div>
-        <h2>{this.state[section].title || this.state[section].name}</h2>
-      </div>
+      <React.Fragment>
+        <h3>{this.state[section].title || this.state[section].name}</h3>
+        <ul>
+          {displayListItems(section)}
+        </ul>
+        <a href='#'>More Info</a>
+      </React.Fragment>
     )
   };
 
   render() {
-    const sections = ['Films', 'People', 'Planets', 'Species', 'Vehicles'];
+    const sections = ['Films', 'People', 'Planets', 'Species', 'Vehicles', 'Starships'];
 
     return (
       <div className='home-main'>
@@ -111,10 +244,10 @@ export default class Home extends Component {
           sections.map((section) => {
             return (
               <div key={section} className='home__sections'>
-                <h3>{section}</h3>
-                <div>
+                <h2>{section}</h2>
+                <React.Fragment>
                   {this.displaySection(section.toLowerCase())}
-                </div>
+                </React.Fragment>
               </div>
             )
 
