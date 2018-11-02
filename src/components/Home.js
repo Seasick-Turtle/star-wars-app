@@ -104,7 +104,6 @@ export default class Home extends Component {
         case 'films':
           return (
             <React.Fragment>
-              {console.time()}
               <li>
                 { displayListItem(section, 'Directed by', 'director')}
               </li>
@@ -114,13 +113,11 @@ export default class Home extends Component {
               <li>
                 { displayListItem(section, 'Released', 'release_date')}
               </li>
-              {console.timeEnd()}
             </React.Fragment>
           );
         case 'vehicles':
           return (
             <React.Fragment>
-              {console.time()}
               <li>
                 { displayListItem(section, 'Model', 'model')}
               </li>
@@ -130,13 +127,11 @@ export default class Home extends Component {
               <li>
                 { displayListItem(section, 'Crew', 'crew')}
               </li>
-              {console.timeEnd()}
             </React.Fragment>
           );
         case 'starships':
           return (
             <React.Fragment>
-              {console.time()}
               <li>
                 { displayListItem(section, 'Model', 'model')}
               </li>
@@ -146,7 +141,6 @@ export default class Home extends Component {
               <li>
                 { displayListItem(section, 'Crew', 'crew')}
               </li>
-              {console.timeEnd()}
             </React.Fragment>
           );
         case 'planets':
@@ -197,22 +191,6 @@ export default class Home extends Component {
     };
 
     const displayListItem = (section, detail, property) => {
-      // const fetchProperty = async (section, property) => {
-      //   const response = await fetch(property);
-      //   const data = await response.json();
-      //
-      //   this.setState({
-      //     [section]: data[property]
-      //   })
-      // };
-      //
-      // if (detail === 'Homeworld') {
-      //   fetchProperty(property);
-      // }
-      //
-      // // if (property === 'homeworld') {
-      // //   return fetchProperty(property);
-      // // }
 
       return (
         <React.Fragment>
