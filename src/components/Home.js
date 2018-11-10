@@ -137,6 +137,7 @@ export default class Home extends Component {
   displaySection = (section) => {
 
     const displayListItem = (section, detail, property) => {
+      console.log(this.state[section][property]);
 
       return (
         <React.Fragment>
@@ -256,12 +257,12 @@ export default class Home extends Component {
         {
           sections.map((section) => {
             return (
-              <div key={section} className='home__sections'>
+              <section key={section} className='home__sections'>
                 <h2>{section}</h2>
                 <React.Fragment>
                   {this.displaySection(section.toLowerCase())}
                 </React.Fragment>
-              </div>
+              </section>
             )
 
           })
