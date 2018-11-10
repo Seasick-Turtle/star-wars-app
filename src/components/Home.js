@@ -18,21 +18,21 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
-    this.retrieveAllSections(['films', 'people', 'planets', 'species', 'vehicles', 'starships']);
+    this.fetchAllSections(['films', 'people', 'planets', 'species', 'vehicles', 'starships']);
   }
 
-  retrieveAllSections(sections) {
+  fetchAllSections(sections) {
     for (let i = 0; i < sections.length; i++) {
-      this.retrieveSection(sections[i]);
+      this.fetchSection(sections[i]);
     }
   }
 
-  retrieveSection = (section) => {
+  fetchSection = (section) => {
     /*
      * function used to generate a random value
      * between 1 and the max number in each category
      */
-    function getRandomSection (section)  {
+    const fetchRandomSection = (section) => {
 
       const MIN = 1;
       let max;
@@ -62,9 +62,9 @@ export default class Home extends Component {
 
       return (Math.floor(Math.random() * (max - MIN + 1)) + MIN);
 
-    }
+    };
 
-    let sectionNum = getRandomSection(section);
+    let sectionNum = fetchRandomSection(section);
     const url = `https://swapi.co/api/${section}/${sectionNum}`;
 
     /*
@@ -81,24 +81,71 @@ export default class Home extends Component {
           throw new Error(response.statusText);
         }
 
-       const data = await response.json();
+        const data = await response.json();
 
-        this.setState({
-          [section]: data
-        });
+
+
+        this.setState((state, props) => ({
+          /*
+          * Take the data from the API call and push it to
+          * state; in order to prevent the homeworld urls
+          * from showing instead of the actual planet, call
+          * fetchHomeworld and replace the url in state
+          * */
+         [section]: data
+        }), () => {
+          if (data.homeworld) {
+            this.fetchHomeworld(section, data.homeworld);
+          }
+        })
 
       } catch (err) {
         console.log('trying again for: ' + section);
-        return await this.retrieveSection(section);
+        return await this.fetchSection(section);
       }
     };
-
 
     fetchData(url, section);
 
   };
 
+  fetchHomeworld = async (section, homeworldURL) => {
+    try {
+      const response = await fetch(homeworldURL);
+
+      if(!response.ok) {
+        throw new Error(response.statusText);
+      }
+
+      const data = await response.json();
+      const homeworld = data.name;
+
+      this.setState((state, props) => ({
+        [section]: {
+          ...state[section],
+          homeworld: homeworld
+        }
+      }));
+      console.log(this.state);
+
+    } catch (err) {
+      console.log(err);
+    }
+
+  };
+
   displaySection = (section) => {
+
+    const displayListItem = (section, detail, property) => {
+      console.log(this.state[section][property]);
+
+      return (
+        <React.Fragment>
+          { `${detail}: ${this.state[section][property]}`}
+        </React.Fragment>
+      );
+    };
+
     const displayListItems = (section) => {
       switch (section) {
         case 'films':
@@ -190,17 +237,6 @@ export default class Home extends Component {
       }
     };
 
-    const displayListItem = (section, detail, property) => {
-
-      return (
-        <React.Fragment>
-          { `${detail}: ${this.state[section][property]}` }
-        </React.Fragment>
-      );
-    };
-
-
-
     return (
       <React.Fragment>
         <h3>{this.state[section].title || this.state[section].name}</h3>
@@ -217,16 +253,16 @@ export default class Home extends Component {
 
     return (
       <div className='home-main'>
-        <h2 className='home-main__title'>Home Component</h2>
+        <h2 className='home-main__title'>Star Wars API Example</h2>
         {
           sections.map((section) => {
             return (
-              <div key={section} className='home__sections'>
+              <section key={section} className='home__sections'>
                 <h2>{section}</h2>
                 <React.Fragment>
                   {this.displaySection(section.toLowerCase())}
                 </React.Fragment>
-              </div>
+              </section>
             )
 
           })
