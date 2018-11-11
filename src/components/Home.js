@@ -126,7 +126,6 @@ export default class Home extends Component {
           homeworld: homeworld
         }
       }));
-      console.log(this.state);
 
     } catch (err) {
       console.log(err);
@@ -137,8 +136,6 @@ export default class Home extends Component {
   displaySection = (section) => {
 
     const displayListItem = (section, detail, property) => {
-      console.log(this.state[section][property]);
-
       return (
         <React.Fragment>
           { `${detail}: ${this.state[section][property]}`}
@@ -257,12 +254,12 @@ export default class Home extends Component {
         {
           sections.map((section) => {
             return (
-              <section key={section} className='home__sections'>
+              <div key={section} className='home__sections'>
                 <h2>{section}</h2>
                 <React.Fragment>
                   {this.displaySection(section.toLowerCase())}
                 </React.Fragment>
-              </section>
+              </div>
             )
 
           })
