@@ -83,8 +83,6 @@ export default class Home extends Component {
 
         const data = await response.json();
 
-
-
         this.setState((state, props) => ({
           /*
           * Take the data from the API call and push it to
@@ -100,7 +98,6 @@ export default class Home extends Component {
         })
 
       } catch (err) {
-        console.log('trying again for: ' + section);
         return await this.fetchSection(section);
       }
     };
