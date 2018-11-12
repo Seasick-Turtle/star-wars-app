@@ -62,16 +62,18 @@ class App extends Component {
       <div className="app">
         <Router>
           <React.StrictMode>
-            <Header searchChange={this.onSearchChange}/>
-            <Switch>
-              <Route exact path='/' component={Home} />
-              <Route path='/films' component={Films}/>
-              <Route path='/people' component={People}/>
-              <Route path='/planets' component={Planets}/>
-              <Route path='/vehicles' component={Vehicles}/>
-              <Route path='/starships' component={Starships}/>
-              <Route path='/results' component={Results}/>
-            </Switch>
+            <React.Fragment>
+              <Header searchChange={this.onSearchChange}/>
+              <Switch>
+                <Route exact path='/' component={Home} />
+                <Route path='/films' component={Films}/>
+                <Route path='/people' component={People}/>
+                <Route path='/planets' component={Planets}/>
+                <Route path='/vehicles' component={Vehicles}/>
+                <Route path='/starships' component={Starships}/>
+                <Route path='/results' component={Results}/>
+              </Switch>
+            </React.Fragment>
           </React.StrictMode>
         </Router>
 
