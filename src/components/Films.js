@@ -4,7 +4,7 @@ import '../styles/Movies.css';
 const Films = ({ films }) => {
 
   return (
-    <section className='component movies col-1'>
+    <section className='films col-1'>
       <h3>
         Films component
       </h3>

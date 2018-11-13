@@ -6,6 +6,7 @@ import Home from '../components/Home';
 import Films from '../components/Films';
 import People from '../components/People';
 import Planets from '../components/Planets';
+import Species from '../components/Species';
 import Vehicles from '../components/Vehicles'
 import Starships from '../components/Starships';
 import Results from '../components/Results';
@@ -69,6 +70,7 @@ class App extends Component {
                 <Route path='/films' component={Films}/>
                 <Route path='/people' component={People}/>
                 <Route path='/planets' component={Planets}/>
+                <Route path='/species' component={Species}/>
                 <Route path='/vehicles' component={Vehicles}/>
                 <Route path='/starships' component={Starships}/>
                 <Route path='/results' component={Results}/>

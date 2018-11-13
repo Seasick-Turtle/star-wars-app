@@ -1,4 +1,10 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
+import Films from '../components/Films';
+import People from '../components/People';
+import Planets from '../components/Planets';
+import Vehicles from '../components/Vehicles'
+import Starships from '../components/Starships';
 import '../styles/Home.css';
 
 export default class Home extends Component {
@@ -237,7 +243,7 @@ export default class Home extends Component {
         <ul>
           {displayListItems(section)}
         </ul>
-        <a href='#'>More Info</a>
+        <Link to={section}>More Info</Link>
       </React.Fragment>
     )
   };
