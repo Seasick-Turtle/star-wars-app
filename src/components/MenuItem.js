@@ -14,7 +14,6 @@ export default class MenuItem extends Component {
   /*
   function accepts an array, maps over it and returns
   what is used for the nested drop down menu
-  TODO: display item in Main.js when user clicks on item
    */
   displayItem = (itemsArray) => {
 

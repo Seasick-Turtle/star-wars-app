@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/Home.css';
 
 export default class Home extends Component {
@@ -65,7 +66,7 @@ export default class Home extends Component {
     };
 
     let sectionNum = fetchRandomSection(section);
-    const url = `https://swapi.co/api/${section}/${sectionNum}`;
+    const url = `https://swapi.co/api/${section}/${sectionNum}/`;
 
     /*
      * fetches data from SWAPI with random number for
@@ -83,8 +84,6 @@ export default class Home extends Component {
 
         const data = await response.json();
 
-
-
         this.setState((state, props) => ({
           /*
           * Take the data from the API call and push it to
@@ -100,7 +99,6 @@ export default class Home extends Component {
         })
 
       } catch (err) {
-        console.log('trying again for: ' + section);
         return await this.fetchSection(section);
       }
     };
@@ -120,13 +118,12 @@ export default class Home extends Component {
       const data = await response.json();
       const homeworld = data.name;
 
-      this.setState((state, props) => ({
+      this.setState((state) => ({
         [section]: {
           ...state[section],
           homeworld: homeworld
         }
       }));
-      console.log(this.state);
 
     } catch (err) {
       console.log(err);
@@ -137,8 +134,6 @@ export default class Home extends Component {
   displaySection = (section) => {
 
     const displayListItem = (section, detail, property) => {
-      console.log(this.state[section][property]);
-
       return (
         <React.Fragment>
           { `${detail}: ${this.state[section][property]}`}
@@ -243,7 +238,12 @@ export default class Home extends Component {
         <ul>
           {displayListItems(section)}
         </ul>
-        <a href='#'>More Info</a>
+        <Link
+          className='home__section'
+          to={{
+            pathname: `/${section}`,
+            state: {[section]: this.state[section]}
+          }} >See more</Link>
       </React.Fragment>
     )
   };
@@ -257,12 +257,12 @@ export default class Home extends Component {
         {
           sections.map((section) => {
             return (
-              <section key={section} className='home__sections'>
+              <div key={section} className='home__sections'>
                 <h2>{section}</h2>
                 <React.Fragment>
                   {this.displaySection(section.toLowerCase())}
                 </React.Fragment>
-              </section>
+              </div>
             )
 
           })
