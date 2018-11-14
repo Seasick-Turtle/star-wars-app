@@ -232,7 +232,6 @@ export default class Home extends Component {
       }
     };
 
-    console.log(this.state[section].url);
     return (
       <React.Fragment>
         <h3>{this.state[section].title || this.state[section].name}</h3>
@@ -251,8 +250,6 @@ export default class Home extends Component {
 
   render() {
     const sections = ['Films', 'People', 'Planets', 'Species', 'Vehicles', 'Starships'];
-
-    console.log(this.state.planets);
 
     return (
       <div className='home-main'>

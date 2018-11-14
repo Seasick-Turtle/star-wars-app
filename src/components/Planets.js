@@ -9,17 +9,15 @@ const Planets = (planet) => {
     <main>
       <section className='planets'>
         <Link to='/'>Back</Link>
-        <h3>{planetData.name}</h3>
-        <p>Climate: {planetData.climate}</p>
-        <p>Population: {planetData.population}</p>
-        <p>Terrain: {planetData.terrain}</p>
-        <p>Rotation Period: {planetData.rotation_period}</p>
-        <p>Orbital Period: {planetData.orbital_period}</p>
+        <h2>{planetData.name}</h2>
+        <p><strong>Climate:</strong> {planetData.climate}</p>
+        <p><strong>Population:</strong> {planetData.population}</p>
+        <p><strong>Terrain:</strong> {planetData.terrain}</p>
+        <p><strong>Rotation Period:</strong> {planetData.rotation_period}</p>
+        <p><strong>Orbital Period:</strong> {planetData.orbital_period}</p>
       </section>
     </main>
-
     )
-
 };
 
 export default Planets;

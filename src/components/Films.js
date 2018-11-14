@@ -1,19 +1,23 @@
 import React from 'react';
 import '../styles/Movies.css';
+import {Link} from 'react-router-dom';
 
-const Films = ({ films }) => {
+const Films = (film) => {
+  const filmData = film.location.state.films;
+  console.log(filmData);
 
   return (
-    <section className='films col-1'>
-      <h3>
-        Films component
-      </h3>
-      {/*{*/}
-        {/*films.map(film => {*/}
-          {/*return <p key={film.title}>{film.title}</p>*/}
-        {/*})*/}
-      {/*}*/}
-    </section>
+    <main>
+      <section className='planets'>
+        <Link to='/'>Back</Link>
+        <h2>{filmData.title}</h2>
+        <p><strong>Episode:</strong> {filmData.episode_id}</p>
+        <p><strong>Director:</strong> {filmData.director}</p>
+        <p><strong>Producer:</strong> {filmData.producer}</p>
+        <p><strong>Release Date:</strong> {filmData.release_date}</p>
+        <p><strong>Opening Crawl:</strong> {filmData.opening_crawl}</p>
+      </section>
+    </main>
   )
 };
 
