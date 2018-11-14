@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/Movies.css';
+import '../styles/Films.css';
 import {Link} from 'react-router-dom';
 
 const Films = (film) => {
@@ -8,7 +8,7 @@ const Films = (film) => {
 
   return (
     <main>
-      <section className='planets'>
+      <section className='section__component'>
         <Link to='/'>Back</Link>
         <h2>{filmData.title}</h2>
         <p><strong>Episode:</strong> {filmData.episode_id}</p>

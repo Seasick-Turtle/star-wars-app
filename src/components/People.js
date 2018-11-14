@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/Characters.css';
+import '../styles/People.css';
 import {Link} from 'react-router-dom';
 
 const People = (person) => {
@@ -8,7 +8,7 @@ const People = (person) => {
 
   return (
     <main>
-      <section className='planets'>
+      <section className='section__component'>
         <Link to='/'>Back</Link>
         <h2>{personData.name}</h2>
         <p><strong>Birth Date:</strong> {personData.birth_year}</p>

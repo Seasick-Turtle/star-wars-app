@@ -7,7 +7,7 @@ const Vehicles = (vehicle) => {
 
   return (
     <main>
-      <section className='planets'>
+      <section className='section__component'>
         <Link to='/'>Back</Link>
         <h2>{vehicleData.name}</h2>
         <p><strong>Crew:</strong> {vehicleData.crew}</p>

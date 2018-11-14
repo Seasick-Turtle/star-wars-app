@@ -1,13 +1,4 @@
-.app {
-	display: grid;
-	justify-items: center;
-	grid-template-rows: auto;
-	grid-template-areas:
-		"header"
-		"main";
-}
-
-.section__component {
+.people {
 	text-align: center;
 	margin: 1.5em 0;
 	background-color: white;

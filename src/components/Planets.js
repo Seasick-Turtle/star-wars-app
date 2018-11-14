@@ -7,7 +7,7 @@ const Planets = (planet) => {
 
   return (
     <main>
-      <section className='planets'>
+      <section className='section__component'>
         <Link to='/'>Back</Link>
         <h2>{planetData.name}</h2>
         <p><strong>Climate:</strong> {planetData.climate}</p>
