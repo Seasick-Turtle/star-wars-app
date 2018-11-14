@@ -1,18 +1,25 @@
 import React from 'react';
 import '../styles/Planets.css';
+import {Link} from 'react-router-dom';
 
-const Planets = ({ planets }) => {
+const Planets = (planet) => {
+  const planetData = planet.location.state.planets;
+
   return (
-    <section className='planets col-2'>
-     <h3>Planets component</h3>
-      {/*{*/}
-        {/*planets.map(planet => {*/}
-          {/*return <p key={planet.name}>{planet.name}</p>*/}
-        {/*})*/}
+    <main>
+      <section className='planets'>
+        <Link to='/'>Back</Link>
+        <h3>{planetData.name}</h3>
+        <p>Climate: {planetData.climate}</p>
+        <p>Population: {planetData.population}</p>
+        <p>Terrain: {planetData.terrain}</p>
+        <p>Rotation Period: {planetData.rotation_period}</p>
+        <p>Orbital Period: {planetData.orbital_period}</p>
+      </section>
+    </main>
 
-      {/*}*/}
-    </section>
-  )
+    )
+
 };
 
 export default Planets;

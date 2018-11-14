@@ -1,10 +1,5 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
-import Films from '../components/Films';
-import People from '../components/People';
-import Planets from '../components/Planets';
-import Vehicles from '../components/Vehicles'
-import Starships from '../components/Starships';
 import '../styles/Home.css';
 
 export default class Home extends Component {
@@ -71,7 +66,7 @@ export default class Home extends Component {
     };
 
     let sectionNum = fetchRandomSection(section);
-    const url = `https://swapi.co/api/${section}/${sectionNum}`;
+    const url = `https://swapi.co/api/${section}/${sectionNum}/`;
 
     /*
      * fetches data from SWAPI with random number for
@@ -123,7 +118,7 @@ export default class Home extends Component {
       const data = await response.json();
       const homeworld = data.name;
 
-      this.setState((state, props) => ({
+      this.setState((state) => ({
         [section]: {
           ...state[section],
           homeworld: homeworld
@@ -237,19 +232,27 @@ export default class Home extends Component {
       }
     };
 
+    console.log(this.state[section].url);
     return (
       <React.Fragment>
         <h3>{this.state[section].title || this.state[section].name}</h3>
         <ul>
           {displayListItems(section)}
         </ul>
-        <Link to={section}>More Info</Link>
+        <Link
+          className='home__section'
+          to={{
+            pathname: `/${section}`,
+            state: {[section]: this.state[section]}
+          }} >See more</Link>
       </React.Fragment>
     )
   };
 
   render() {
     const sections = ['Films', 'People', 'Planets', 'Species', 'Vehicles', 'Starships'];
+
+    console.log(this.state.planets);
 
     return (
       <div className='home-main'>

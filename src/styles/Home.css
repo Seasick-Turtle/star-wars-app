@@ -39,6 +39,10 @@
 	justify-self: center;
 }
 
+.home__section {
+	text-decoration: none;
+}
+
 .home__sections {
 	align-self: center;
 	margin: 2em;

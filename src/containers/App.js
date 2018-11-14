@@ -28,27 +28,6 @@ class App extends Component {
 
   }
 
-  async fetchPlanets() {
-    fetch(`https://swapi.co/api/planets/`)
-      .then(response => response.json())
-      .then(data => {
-        this.setState({planets: data.results});
-      })
-
-  }
-
-  async fetchFilms() {
-    fetch('https://swapi.co/api/films/')
-      .then(response => response.json())
-      .then(data => this.setState({films: data.results}));
-  }
-
-  async fetchPeople() {
-    fetch(`https://swapi.co/api/people/`)
-      .then(response => response.json())
-      .then(data => this.setState({people: data.results}));
-  }
-
   onSearchChange = (e) => {
     console.log(e.target.value);
     this.setState ({ searchField: e.target.value });
@@ -56,7 +35,7 @@ class App extends Component {
 
 
   render() {
-    const {searchField, planets, films, people} = this.state;
+    const {searchField} = this.state;
 
 
     return (
