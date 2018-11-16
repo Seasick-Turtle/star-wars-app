@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/People.css';
+import '../../styles/People.css';
 import {Link} from 'react-router-dom';
 
 const People = (person) => {

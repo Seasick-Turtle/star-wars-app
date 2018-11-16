@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/Films.css';
+import '../../styles/Films.css';
 import {Link} from 'react-router-dom';
 
 const Films = (film) => {
