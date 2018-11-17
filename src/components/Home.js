@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import '../styles/Home.css';
 
 export default class Home extends Component {
@@ -232,16 +232,18 @@ export default class Home extends Component {
       }
     };
 
+    let sectionItem =this.state[section].title || this.state[section].name;
+
     return (
       <React.Fragment>
-        <h3>{this.state[section].title || this.state[section].name}</h3>
+        <h3>{sectionItem}</h3>
         <ul>
           {displayListItems(section)}
         </ul>
         <Link
           className='home__section'
           to={{
-            pathname: `/${section}`,
+            pathname: `/${section}/${sectionItem}`,
             state: {[section]: this.state[section]}
           }} >See more</Link>
       </React.Fragment>
