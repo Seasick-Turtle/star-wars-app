@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment, StrictMode } from 'react';
 import '../styles/App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from '../components/Header';
@@ -41,8 +41,8 @@ class App extends Component {
     return (
       <div className="app">
         <Router>
-          <React.StrictMode>
-            <React.Fragment>
+          <StrictMode>
+            <Fragment>
               <Header searchChange={this.onSearchChange}/>
               <Switch>
                 <Route exact path='/' component={Home} />
@@ -54,8 +54,8 @@ class App extends Component {
                 <Route path='/starships' component={Starships}/>
                 <Route path='/results' component={Results}/>
               </Switch>
-            </React.Fragment>
-          </React.StrictMode>
+            </Fragment>
+          </StrictMode>
         </Router>
 
       </div>
