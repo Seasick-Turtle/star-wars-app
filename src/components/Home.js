@@ -1,5 +1,6 @@
-import React, { Component, Fragment } from 'react';
-import { Route, Link } from 'react-router-dom';
+import React, {Component, Fragment } from 'react';
+import { Link } from 'react-router-dom';
+import { loadState, saveState } from '../localStorage';
 import '../styles/Home.css';
 
 export default class Home extends Component {
@@ -19,10 +20,17 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
+
     this.fetchAllSections(['films', 'people', 'planets', 'species', 'vehicles', 'starships'])
   }
 
   fetchAllSections = (sections) => {
+
+    sections.map((section) => {
+      this.setState((state, props) => ({
+        [section]: loadState(section)
+      }))
+    });
 
     if (!this.hasOneDayPassed() ) {
       return false;
@@ -91,7 +99,6 @@ export default class Home extends Component {
      * if the response status is anything other than ok
      * try again until successful
      */
-
     const fetchData = async (url, section) => {
       try {
         const response = await fetch(url);
@@ -117,6 +124,7 @@ export default class Home extends Component {
           }
         });
         // console.log('supposed to save', data);
+        saveState(section, data);
       } catch (err) {
         return await this.fetchSection(section);
       }
