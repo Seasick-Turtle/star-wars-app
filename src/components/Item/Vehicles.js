@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom';
 
 const Vehicles = (vehicle) => {
   const vehicleData = vehicle.location.state.vehicles;
-  console.log(vehicleData);
 
   return (
     <main>

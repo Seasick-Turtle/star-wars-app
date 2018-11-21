@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom';
 
 const Species = ( species ) => {
   const speciesData = species.location.state.species;
-  console.log(speciesData);
 
   return (
     <main>
