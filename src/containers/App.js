@@ -24,10 +24,6 @@ class App extends Component {
     }
   }
 
-  componentDidMount() {
-
-  }
-
   onSearchChange = (e) => {
     console.log(e.target.value);
     this.setState ({ searchField: e.target.value });
@@ -57,7 +53,6 @@ class App extends Component {
             </Fragment>
           </StrictMode>
         </Router>
-
       </div>
     );
 

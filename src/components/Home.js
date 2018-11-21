@@ -16,39 +16,51 @@ export default class Home extends Component {
       vehicles: {},
       starships: {}
     }
-
   }
 
-  componentDidMount() {
 
+  componentDidMount() {
     this.fetchAllSections(['films', 'people', 'planets', 'species', 'vehicles', 'starships'])
+  }
+
+  componentWillUnmount() {
+
   }
 
   fetchAllSections = (sections) => {
 
+    // set each section state to the data stored in localStorage
     sections.map((section) => {
       this.setState((state, props) => ({
-        [section]: loadState(section)
+        [section]: loadState([section])
       }))
     });
 
+    // // checks if a day has passed, if not don't go through with
+    // // the rest of the function
     if (!this.hasOneDayPassed() ) {
       return false;
     }
 
+    // fetches the data for each section
     for (let i = 0; i < sections.length; i++) {
-      this.fetchSection(sections[i]);
+       this.fetchSection(sections[i]);
     }
 
   };
 
   hasOneDayPassed = () => {
+    // create new Date object/string for comparison
     let date = new Date().toLocaleDateString();
 
+    // should fetchAllSectionsDate match with the current date
+    // return false, do nothing
     if (localStorage.fetchAllSectionsDate === date) {
       return false;
     }
 
+    // otherwise return true and set fetchAllSectionsDate to
+    // current day
     localStorage.fetchAllSectionsDate = date;
     return true;
   };
@@ -120,17 +132,16 @@ export default class Home extends Component {
          [section]: data
         }), () => {
           if (data.homeworld) {
-            this.fetchHomeworld(section, data.homeworld);
+           return this.fetchHomeworld(section, data.homeworld);
           }
         });
-        // console.log('supposed to save', data);
         saveState(section, data);
       } catch (err) {
         return await this.fetchSection(section);
       }
     };
 
-    fetchData(url, section);
+    return fetchData(url, section);
 
   };
 
@@ -163,7 +174,7 @@ export default class Home extends Component {
     const displayListItem = (section, detail, property) => {
       return (
         <Fragment>
-          { `${detail}: ${this.state[section][property]}`}
+          { `${detail}: ${this.state[section][property]}` }
         </Fragment>
       );
     };
@@ -258,8 +269,7 @@ export default class Home extends Component {
           break;
       }
     };
-
-    let sectionItem =this.state[section].title || this.state[section].name;
+    let sectionItem = this.state[section].title || this.state[section].name;
 
     return (
       <Fragment>
@@ -279,7 +289,6 @@ export default class Home extends Component {
 
   render() {
     const sections = ['Films', 'People', 'Planets', 'Species', 'Vehicles', 'Starships'];
-
 
     return (
       <div className='home-main'>
