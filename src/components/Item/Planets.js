@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/Planets.css';
+import '../../styles/sections.css';
 import {Link} from 'react-router-dom';
 
 const Planets = (planet) => {

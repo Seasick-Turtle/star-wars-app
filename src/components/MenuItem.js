@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import '../styles/MenuItem.css';
 
 export default class MenuItem extends Component {
@@ -37,10 +37,10 @@ export default class MenuItem extends Component {
     const limitedList = film[category].splice(0,4);
 
     return (
-      <React.Fragment>
+      <Fragment>
         {this.displayItem(limitedList)}
         <a className='menuItem__submenu-seeMore' href='#'>See More</a>
-      </React.Fragment>
+      </Fragment>
     )
 
   };

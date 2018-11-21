@@ -1,5 +1,6 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import { loadState, saveState } from '../localStorage';
 import '../styles/Home.css';
 
 export default class Home extends Component {
@@ -15,18 +16,54 @@ export default class Home extends Component {
       vehicles: {},
       starships: {}
     }
-
   }
+
 
   componentDidMount() {
-    this.fetchAllSections(['films', 'people', 'planets', 'species', 'vehicles', 'starships']);
+    this.fetchAllSections(['films', 'people', 'planets', 'species', 'vehicles', 'starships'])
   }
 
-  fetchAllSections(sections) {
-    for (let i = 0; i < sections.length; i++) {
-      this.fetchSection(sections[i]);
-    }
+  componentWillUnmount() {
+
   }
+
+  fetchAllSections = (sections) => {
+
+    // set each section state to the data stored in localStorage
+    sections.map((section) => {
+      this.setState((state, props) => ({
+        [section]: loadState([section])
+      }))
+    });
+
+    // // checks if a day has passed, if not don't go through with
+    // // the rest of the function
+    if (!this.hasOneDayPassed() ) {
+      return false;
+    }
+
+    // fetches the data for each section
+    for (let i = 0; i < sections.length; i++) {
+       this.fetchSection(sections[i]);
+    }
+
+  };
+
+  hasOneDayPassed = () => {
+    // create new Date object/string for comparison
+    let date = new Date().toLocaleDateString();
+
+    // should fetchAllSectionsDate match with the current date
+    // return false, do nothing
+    if (localStorage.fetchAllSectionsDate === date) {
+      return false;
+    }
+
+    // otherwise return true and set fetchAllSectionsDate to
+    // current day
+    localStorage.fetchAllSectionsDate = date;
+    return true;
+  };
 
   fetchSection = (section) => {
     /*
@@ -84,26 +121,27 @@ export default class Home extends Component {
 
         const data = await response.json();
 
+        /*
+         * Take the data from the API call and push it to
+         * state; in order to prevent the homeworld urls
+         * from showing instead of the actual planet, call
+         * fetchHomeworld and replace the url in state
+         */
+
         this.setState((state, props) => ({
-          /*
-          * Take the data from the API call and push it to
-          * state; in order to prevent the homeworld urls
-          * from showing instead of the actual planet, call
-          * fetchHomeworld and replace the url in state
-          * */
          [section]: data
         }), () => {
           if (data.homeworld) {
-            this.fetchHomeworld(section, data.homeworld);
+           return this.fetchHomeworld(section, data.homeworld);
           }
-        })
-
+        });
+        saveState(section, data);
       } catch (err) {
         return await this.fetchSection(section);
       }
     };
 
-    fetchData(url, section);
+    return fetchData(url, section);
 
   };
 
@@ -135,9 +173,9 @@ export default class Home extends Component {
 
     const displayListItem = (section, detail, property) => {
       return (
-        <React.Fragment>
-          { `${detail}: ${this.state[section][property]}`}
-        </React.Fragment>
+        <Fragment>
+          { `${detail}: ${this.state[section][property]}` }
+        </Fragment>
       );
     };
 
@@ -145,7 +183,7 @@ export default class Home extends Component {
       switch (section) {
         case 'films':
           return (
-            <React.Fragment>
+            <Fragment>
               <li>
                 { displayListItem(section, 'Directed by', 'director')}
               </li>
@@ -155,11 +193,11 @@ export default class Home extends Component {
               <li>
                 { displayListItem(section, 'Released', 'release_date')}
               </li>
-            </React.Fragment>
+            </Fragment>
           );
         case 'vehicles':
           return (
-            <React.Fragment>
+            <Fragment>
               <li>
                 { displayListItem(section, 'Model', 'model')}
               </li>
@@ -169,11 +207,11 @@ export default class Home extends Component {
               <li>
                 { displayListItem(section, 'Crew', 'crew')}
               </li>
-            </React.Fragment>
+            </Fragment>
           );
         case 'starships':
           return (
-            <React.Fragment>
+            <Fragment>
               <li>
                 { displayListItem(section, 'Model', 'model')}
               </li>
@@ -183,11 +221,11 @@ export default class Home extends Component {
               <li>
                 { displayListItem(section, 'Crew', 'crew')}
               </li>
-            </React.Fragment>
+            </Fragment>
           );
         case 'planets':
           return (
-            <React.Fragment>
+            <Fragment>
               <li>
                 { displayListItem(section, 'Climate', 'climate')}
               </li>
@@ -197,11 +235,11 @@ export default class Home extends Component {
               <li>
                 { displayListItem(section, 'Population', 'population')}
               </li>
-            </React.Fragment>
+            </Fragment>
           );
         case 'species':
           return (
-            <React.Fragment>
+            <Fragment>
               <li>
                 { displayListItem(section, 'Classification', 'episode_id')}
               </li>
@@ -211,11 +249,11 @@ export default class Home extends Component {
               <li>
                 { displayListItem(section, 'Homeworld', 'homeworld')}
               </li>
-            </React.Fragment>
+            </Fragment>
           );
         case 'people':
           return (
-            <React.Fragment>
+            <Fragment>
               <li>
                 { displayListItem(section, 'Birth Year', 'birth_year')}
               </li>
@@ -225,26 +263,27 @@ export default class Home extends Component {
               <li>
                 { displayListItem(section, 'Gender', 'gender')}
               </li>
-            </React.Fragment>
+            </Fragment>
           );
         default:
           break;
       }
     };
+    let sectionItem = this.state[section].title || this.state[section].name;
 
     return (
-      <React.Fragment>
-        <h3>{this.state[section].title || this.state[section].name}</h3>
+      <Fragment>
+        <h3>{sectionItem}</h3>
         <ul>
           {displayListItems(section)}
         </ul>
         <Link
           className='home__section'
           to={{
-            pathname: `/${section}`,
+            pathname: `/${section}/${sectionItem}`,
             state: {[section]: this.state[section]}
           }} >See more</Link>
-      </React.Fragment>
+      </Fragment>
     )
   };
 
@@ -259,9 +298,9 @@ export default class Home extends Component {
             return (
               <div key={section} className='home__sections'>
                 <h2>{section}</h2>
-                <React.Fragment>
+                <Fragment>
                   {this.displaySection(section.toLowerCase())}
-                </React.Fragment>
+                </Fragment>
               </div>
             )
 

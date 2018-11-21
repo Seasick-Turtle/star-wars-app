@@ -1,9 +1,11 @@
-.planets {
+.section__component {
 	text-align: center;
 	margin: 1.5em 0;
 	background-color: white;
 	border: 1px solid black;
 	border-radius: .2em;
-	min-width: 43em;
+	min-width: 2em;
+	max-width: 40em;
+	padding: 1em;
 	height: 100%;
 }
