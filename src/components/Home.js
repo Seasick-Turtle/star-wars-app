@@ -18,31 +18,35 @@ export default class Home extends Component {
     }
   }
 
+  // class field use to cancel API requests
+  // false is default value in order to make requests
+  _isMounted = false;
 
   componentDidMount() {
-    this.fetchAllSections(['films', 'people', 'planets', 'species', 'vehicles', 'starships'])
+    this.fetchAllSections(['films', 'people', 'planets', 'species', 'vehicles', 'starships']);
+    this._isMounted = true;
   }
 
   componentWillUnmount() {
-
+    this._isMounted = false;
   }
 
   fetchAllSections = (sections) => {
 
-    // set each section state to the data stored in localStorage
-    sections.map((section) => {
-      this.setState((state, props) => ({
-        [section]: loadState([section])
-      }))
-    });
-
-    // // checks if a day has passed, if not don't go through with
-    // // the rest of the function
+    // checks if a day has passed, if not, don't
+    // fetch data again
     if (!this.hasOneDayPassed() ) {
+      // set each section state to the data stored in localStorage
+      for (let i = 0; i < sections.length; i++) {
+        let section = sections[i];
+        this.setState((state) => ({
+          [section]: loadState(section)
+        }))
+      }
+
       return false;
     }
 
-    // fetches the data for each section
     for (let i = 0; i < sections.length; i++) {
        this.fetchSection(sections[i]);
     }
@@ -128,14 +132,18 @@ export default class Home extends Component {
          * fetchHomeworld and replace the url in state
          */
 
-        this.setState((state, props) => ({
-         [section]: data
-        }), () => {
-          if (data.homeworld) {
-           return this.fetchHomeworld(section, data.homeworld);
-          }
-        });
-        saveState(section, data);
+        // check to see if mounted, if so, cancel API request
+        if (this._isMounted) {
+          this.setState((state, props) => ({
+            [section]: data
+          }), () => {
+            if (data.homeworld) {
+              return this.fetchHomeworld(section, data.homeworld);
+            }
+          });
+        }
+
+        return saveState(section, data);
       } catch (err) {
         return await this.fetchSection(section);
       }
@@ -269,7 +277,8 @@ export default class Home extends Component {
           break;
       }
     };
-    let sectionItem = this.state[section].title || this.state[section].name;
+
+    let sectionItem  = this.state[section].title || this.state[section].name;
 
     return (
       <Fragment>
