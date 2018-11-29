@@ -13,7 +13,6 @@ export const loadState = (section) => {
 export const saveState = async (section, state) => {
   try {
     const serializedState = await JSON.stringify(state);
-    console.log(serializedState);
     return await localStorage.setItem(section, serializedState);
   } catch (err) {
     console.log(err);
