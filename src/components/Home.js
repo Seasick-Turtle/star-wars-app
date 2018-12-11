@@ -22,6 +22,22 @@ export default class Home extends Component {
   // false is default value in order to make requests
   _isMounted = false;
 
+  // // use component did Update to update state and local storage
+  componentDidUpdate(prevProps, prevState, snapshot) {
+
+    // checks if prevState is up to date, if not, update
+    if (prevState !== this.state) {
+      const sections = ['films', 'people', 'planets', 'species', 'vehicles', 'starships'];
+
+      for (let i = 0; i < sections.length; i++) {
+        let section = sections[i];
+        saveState(section, this.state[section]);
+      }
+    }
+
+
+  }
+
   componentDidMount() {
     this.fetchAllSections(['films', 'people', 'planets', 'species', 'vehicles', 'starships']);
     this._isMounted = true;
@@ -143,13 +159,13 @@ export default class Home extends Component {
           });
         }
 
-        return saveState(section, data);
+        await saveState(section, data);
       } catch (err) {
-        return await this.fetchSection(section);
+         await this.fetchSection(section);
       }
     };
 
-    return fetchData(url, section);
+    fetchData(url, section);
 
   };
 

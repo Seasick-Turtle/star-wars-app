@@ -1,6 +1,6 @@
 export const loadState = (section) => {
   try {
-    const serializedState =  localStorage.getItem(section);
+    const serializedState = localStorage.getItem(section);
     if (serializedState === null) {
       return undefined;
     }
