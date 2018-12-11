@@ -3,12 +3,12 @@ import '../styles/App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from '../components/Header';
 import Home from '../components/Home';
-import Films from '../components/Item/Films';
-import People from '../components/Item/People';
-import Planets from '../components/Item/Planets';
-import Species from '../components/Item/Species';
-import Vehicles from '../components/Item/Vehicles'
-import Starships from '../components/Item/Starships';
+import Films from '../components/Sections/Films';
+import People from '../components/Sections/People';
+import Planets from '../components/Sections/Planets';
+import Species from '../components/Sections/Species';
+import Vehicles from '../components/Sections/Vehicles'
+import Starships from '../components/Sections/Starships';
 import Results from '../components/Results';
 
 class App extends Component {

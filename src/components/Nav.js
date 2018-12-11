@@ -1,6 +1,5 @@
 import React from 'react';
 import Search from '../containers/Search';
-// import Themes from '../components/Themes';
 import MenuItem from '../components/MenuItem';
 import {
   TPM,

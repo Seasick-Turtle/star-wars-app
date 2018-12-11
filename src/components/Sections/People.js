@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom';
 
 const People = (person) => {
   const personData = person.location.state.people;
-  console.log(personData);
 
   return (
     <main>
