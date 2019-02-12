@@ -26,24 +26,16 @@
 	}
 }
 
-/*@media (min-width: 821px) {*/
-	/*.home__sections:last-child {*/
-		/*text-align: center;*/
-		/*grid-column: 1 / span 2;*/
-		/*align-self: center;*/
-	/*}*/
-/*}*/
-
 .home-main__title {
 	grid-area: header;
 	justify-self: center;
 }
 
-.home__section {
+.home__category {
 	text-decoration: none;
 }
 
-.home__sections {
+.home__categories {
 	align-self: center;
 	margin: 2em;
 }

@@ -3,15 +3,16 @@ import '../styles/App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from '../components/Header';
 import Home from '../components/Home';
-import Films from '../components/Sections/Films';
-import People from '../components/Sections/People';
-import Planets from '../components/Sections/Planets';
-import Species from '../components/Sections/Species';
-import Vehicles from '../components/Sections/Vehicles'
-import Starships from '../components/Sections/Starships';
+import Films from '../components/Categories/Films';
+import People from '../components/Categories/People';
+import Planets from '../components/Categories/Planets';
+import Species from '../components/Categories/Species';
+import Vehicles from '../components/Categories/Vehicles'
+import Starships from '../components/Categories/Starships';
 import Results from '../components/Results';
 
 class App extends Component {
+  'use strict';
   constructor() {
     super();
 
@@ -31,7 +32,7 @@ class App extends Component {
 
 
   render() {
-    const {searchField} = this.state;
+    const { searchField } = this.state;
 
 
     return (

@@ -27,19 +27,17 @@ export default class Home extends Component {
 
     // checks if prevState is up to date, if not, update
     if (prevState !== this.state) {
-      const sections = ['films', 'people', 'planets', 'species', 'vehicles', 'starships'];
+      const categories = ['films', 'people', 'planets', 'species', 'vehicles', 'starships'];
 
-      for (let i = 0; i < sections.length; i++) {
-        let section = sections[i];
-        saveState(section, this.state[section]);
+      for (let i = 0; i < categories.length; i++) {
+        let category = categories[i];
+        saveState(category, this.state[category]);
       }
     }
-
-
   }
 
   componentDidMount() {
-    this.fetchAllSections(['films', 'people', 'planets', 'species', 'vehicles', 'starships']);
+    this.fetchAllCategorys(['films', 'people', 'planets', 'species', 'vehicles', 'starships']);
     this._isMounted = true;
   }
 
@@ -47,24 +45,24 @@ export default class Home extends Component {
     this._isMounted = false;
   }
 
-  fetchAllSections = (sections) => {
+  fetchAllCategorys = (categories) => {
 
     // checks if a day has passed, if not, don't
     // fetch data again
     if (!this.hasOneDayPassed() ) {
-      // set each section state to the data stored in localStorage
-      for (let i = 0; i < sections.length; i++) {
-        let section = sections[i];
+      // set each category state to the data stored in localStorage
+      for (let i = 0; i < categories.length; i++) {
+        let category = categories[i];
         this.setState((state) => ({
-          [section]: loadState(section)
+          [category]: loadState(category)
         }))
       }
 
       return false;
     }
 
-    for (let i = 0; i < sections.length; i++) {
-       this.fetchSection(sections[i]);
+    for (let i = 0; i < categories.length; i++) {
+       this.fetchCategory(categories[i]);
     }
 
   };
@@ -73,29 +71,29 @@ export default class Home extends Component {
     // create new Date object/string for comparison
     let date = new Date().toLocaleDateString();
 
-    // should fetchAllSectionsDate match with the current date
+    // should fetchAllCategorysDate match with the current date
     // return false, do nothing
-    if (localStorage.fetchAllSectionsDate === date) {
+    if (localStorage.fetchAllCategorysDate === date) {
       return false;
     }
 
-    // otherwise return true and set fetchAllSectionsDate to
+    // otherwise return true and set fetchAllCategorysDate to
     // current day
-    localStorage.fetchAllSectionsDate = date;
+    localStorage.fetchAllCategorysDate = date;
     return true;
   };
 
-  fetchSection = (section) => {
+  fetchCategory = (category) => {
     /*
      * function used to generate a random value
      * between 1 and the max number in each category
      */
-    const fetchRandomSection = (section) => {
+    const fetchRandomData = (category) => {
 
       const MIN = 1;
       let max;
 
-      switch (section) {
+      switch (category) {
         case 'films':
           max = 7;
           break;
@@ -122,8 +120,8 @@ export default class Home extends Component {
 
     };
 
-    let sectionNum = fetchRandomSection(section);
-    const url = `https://swapi.co/api/${section}/${sectionNum}/`;
+    let categoryNum = fetchRandomData(category);
+    const url = `https://swapi.co/api/${category}/${categoryNum}/`;
 
     /*
      * fetches data from SWAPI with random number for
@@ -131,11 +129,11 @@ export default class Home extends Component {
      * if the response status is anything other than ok
      * try again until successful
      */
-    const fetchData = async (url, section) => {
+    const fetchData = async (url, category) => {
       try {
         const response = await fetch(url);
 
-        if (!response.ok) {
+        if(!response.ok) {
           throw new Error(response.statusText);
         }
 
@@ -151,25 +149,31 @@ export default class Home extends Component {
         // check to see if mounted, if so, cancel API request
         if (this._isMounted) {
           this.setState((state, props) => ({
-            [section]: data
+            [category]: data
           }), () => {
             if (data.homeworld) {
-              return this.fetchHomeworld(section, data.homeworld);
+              return this.fetchHomeworld(category, data.homeworld);
             }
           });
         }
 
-        await saveState(section, data);
+        await saveState(category, data);
       } catch (err) {
-         await this.fetchSection(section);
+        await this.fetchCategory(category);
       }
     };
 
-    fetchData(url, section);
+    fetchData(url, category);
 
   };
 
-  fetchHomeworld = async (section, homeworldURL) => {
+  /*
+  This is used to replace the url that is initially
+  sent by the API request with the actual name of the
+  planet.
+   */
+
+  fetchHomeworld = async (category, homeworldURL) => {
     try {
       const response = await fetch(homeworldURL);
 
@@ -181,8 +185,8 @@ export default class Home extends Component {
       const homeworld = data.name;
 
       this.setState((state) => ({
-        [section]: {
-          ...state[section],
+        [category]: {
+          ...state[category],
           homeworld: homeworld
         }
       }));
@@ -193,29 +197,29 @@ export default class Home extends Component {
 
   };
 
-  displaySection = (section) => {
+  displayCategory = (category) => {
 
-    const displayListItem = (section, detail, property) => {
+    const displayListItem = (category, detail, property) => {
       return (
         <Fragment>
-          { `${detail}: ${this.state[section][property]}` }
+          { `${detail}: ${this.state[category][property]}` }
         </Fragment>
       );
     };
 
-    const displayListItems = (section) => {
-      switch (section) {
+    const displayListItems = (category) => {
+      switch (category) {
         case 'films':
           return (
             <Fragment>
               <li>
-                { displayListItem(section, 'Directed by', 'director')}
+                { displayListItem(category, 'Directed by', 'director')}
               </li>
               <li>
-                { displayListItem(section, 'Produced by', 'producer')}
+                { displayListItem(category, 'Produced by', 'producer')}
               </li>
               <li>
-                { displayListItem(section, 'Released', 'release_date')}
+                { displayListItem(category, 'Released', 'release_date')}
               </li>
             </Fragment>
           );
@@ -223,13 +227,13 @@ export default class Home extends Component {
           return (
             <Fragment>
               <li>
-                { displayListItem(section, 'Model', 'model')}
+                { displayListItem(category, 'Model', 'model')}
               </li>
               <li>
-                { displayListItem(section, 'Manufacturer', 'manufacturer')}
+                { displayListItem(category, 'Manufacturer', 'manufacturer')}
               </li>
               <li>
-                { displayListItem(section, 'Crew', 'crew')}
+                { displayListItem(category, 'Crew', 'crew')}
               </li>
             </Fragment>
           );
@@ -237,13 +241,13 @@ export default class Home extends Component {
           return (
             <Fragment>
               <li>
-                { displayListItem(section, 'Model', 'model')}
+                { displayListItem(category, 'Model', 'model')}
               </li>
               <li>
-                { displayListItem(section, 'Manufacturer', 'manufacturer')}
+                { displayListItem(category, 'Manufacturer', 'manufacturer')}
               </li>
               <li>
-                { displayListItem(section, 'Crew', 'crew')}
+                { displayListItem(category, 'Crew', 'crew')}
               </li>
             </Fragment>
           );
@@ -251,13 +255,13 @@ export default class Home extends Component {
           return (
             <Fragment>
               <li>
-                { displayListItem(section, 'Climate', 'climate')}
+                { displayListItem(category, 'Climate', 'climate')}
               </li>
               <li>
-                { displayListItem(section, 'Terrain', 'terrain')}
+                { displayListItem(category, 'Terrain', 'terrain')}
               </li>
               <li>
-                { displayListItem(section, 'Population', 'population')}
+                { displayListItem(category, 'Population', 'population')}
               </li>
             </Fragment>
           );
@@ -265,13 +269,13 @@ export default class Home extends Component {
           return (
             <Fragment>
               <li>
-                { displayListItem(section, 'Classification', 'episode_id')}
+                { displayListItem(category, 'Classification', 'episode_id')}
               </li>
               <li>
-                { displayListItem(section, 'Average Lifespan', 'episode_id')}
+                { displayListItem(category, 'Average Lifespan', 'episode_id')}
               </li>
               <li>
-                { displayListItem(section, 'Homeworld', 'homeworld')}
+                { displayListItem(category, 'Homeworld', 'homeworld')}
               </li>
             </Fragment>
           );
@@ -279,13 +283,13 @@ export default class Home extends Component {
           return (
             <Fragment>
               <li>
-                { displayListItem(section, 'Birth Year', 'birth_year')}
+                { displayListItem(category, 'Birth Year', 'birth_year')}
               </li>
               <li>
-                { displayListItem(section, 'Homeworld', 'homeworld')}
+                { displayListItem(category, 'Homeworld', 'homeworld')}
               </li>
               <li>
-                { displayListItem(section, 'Gender', 'gender')}
+                { displayListItem(category, 'Gender', 'gender')}
               </li>
             </Fragment>
           );
@@ -294,37 +298,37 @@ export default class Home extends Component {
       }
     };
 
-    let sectionItem  = this.state[section].title || this.state[section].name;
+    let categoryTitle  = this.state[category].title || this.state[category].name;
 
     return (
       <Fragment>
-        <h3>{sectionItem}</h3>
+        <h3>{categoryTitle}</h3>
         <ul>
-          {displayListItems(section)}
+          {displayListItems(category)}
         </ul>
         <Link
-          className='home__section'
+          className='home__category'
           to={{
-            pathname: `/${section}/${sectionItem}`,
-            state: {[section]: this.state[section]}
+            pathname: `/${category}/${categoryTitle}`,
+            state: {[category]: this.state[category]}
           }} >See more</Link>
       </Fragment>
     )
   };
 
   render() {
-    const sections = ['Films', 'People', 'Planets', 'Species', 'Vehicles', 'Starships'];
+    const categories = ['Films', 'People', 'Planets', 'Species', 'Vehicles', 'Starships'];
 
     return (
       <div className='home-main'>
         <h2 className='home-main__title'>Star Wars API Example</h2>
         {
-          sections.map((section) => {
+          categories.map((category) => {
             return (
-              <div key={section} className='home__sections'>
-                <h2>{section}</h2>
+              <div key={category} className='home__categories'>
+                <h2>{category}</h2>
                 <Fragment>
-                  {this.displaySection(section.toLowerCase())}
+                  {this.displayCategory(category.toLowerCase())}
                 </Fragment>
               </div>
             )
