@@ -3,7 +3,7 @@ import '../../styles/sections.css';
 import {Link} from 'react-router-dom';
 
 const Starships = ( starship ) => {
-  const starshipData = starship.location.state.starships;
+  const starshipData = starship.location.state.resource;
 
   return (
     <main>

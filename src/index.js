@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './styles/index.css';
+import 'normalize.css';
+import './styles/Index.css';
 import App from './containers/App';
 import registerServiceWorker from './registerServiceWorker';
 

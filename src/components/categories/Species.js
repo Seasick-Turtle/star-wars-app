@@ -3,7 +3,7 @@ import '../../styles/sections.css';
 import {Link} from 'react-router-dom';
 
 const Species = ( species ) => {
-  const speciesData = species.location.state.species;
+  const speciesData = species.location.state.resource;
 
   return (
     <main>

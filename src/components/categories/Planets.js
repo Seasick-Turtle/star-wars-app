@@ -3,7 +3,7 @@ import '../../styles/sections.css';
 import {Link} from 'react-router-dom';
 
 const Planets = (planet) => {
-  const planetData = planet.location.state.planets;
+  const planetData = planet.location.state.resource;
 
   return (
     <main>
