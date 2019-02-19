@@ -10,7 +10,7 @@ import {
   ROTJ,
   TFA
 } from '../Constants';
-import '../styles/Nav.css';
+import '../styles/Nav.scss';
 
 // imports MenuItem in order to display the Navbar items
 const Nav = ({ searchChange }) => {

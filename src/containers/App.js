@@ -1,5 +1,6 @@
-import React, { Component, Fragment, StrictMode } from 'react';
-import '../styles/App.css';
+import React, { useState, useEffect, Fragment, StrictMode } from 'react';
+// import 'bulma/css/bulma.css';
+import '../styles/Apps.scss';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from '../components/Header';
 import Home from '../components/Home';
@@ -11,52 +12,37 @@ import Vehicles from '../components/categories/Vehicles'
 import Starships from '../components/categories/Starships';
 import Results from '../components/Results';
 
-class App extends Component {
-  constructor() {
-    super();
+const App = () => {
 
-    this.state = {
-      searchField: '',
-      planets: [],
-      films: [],
-      people: []
+  const [searchField, setSearchField] = useState('');
 
-    }
-  }
-
-  onSearchChange = (e) => {
+  const onSearchChange = (e) => {
     console.log(e.target.value);
-    this.setState ({ searchField: e.target.value });
+    setSearchField(e.target.value);
   };
 
-
-  render() {
-    const { searchField } = this.state;
-
-
-    return (
-      <div className="app">
-        <Router>
-          <StrictMode>
-            <Fragment>
-              <Header searchChange={this.onSearchChange}/>
-              <Switch>
-                <Route exact path='/' component={Home} />
-                <Route path='/films' component={Films}/>
-                <Route path='/people' component={People}/>
-                <Route path='/planets' component={Planets}/>
-                <Route path='/species' component={Species}/>
-                <Route path='/vehicles' component={Vehicles}/>
-                <Route path='/starships' component={Starships}/>
-                <Route path='/results' component={Results}/>
-              </Switch>
-            </Fragment>
-          </StrictMode>
-        </Router>
-      </div>
-    );
-
-  }
-}
+  return (
+    <div className="app">
+      <Router>
+        <StrictMode>
+          <Fragment>
+            <Header searchChange={onSearchChange}/>
+            <Switch>
+              {searchField}
+              <Route exact path='/' component={Home} />
+              <Route path='/films' component={Films}/>
+              <Route path='/people' component={People}/>
+              <Route path='/planets' component={Planets}/>
+              <Route path='/species' component={Species}/>
+              <Route path='/vehicles' component={Vehicles}/>
+              <Route path='/starships' component={Starships}/>
+              <Route path='/results' component={Results}/>
+            </Switch>
+          </Fragment>
+        </StrictMode>
+      </Router>
+    </div>
+  );
+};
 
 export default App;

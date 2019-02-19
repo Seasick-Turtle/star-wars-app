@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import '../styles/MenuItem.css';
+import '../styles/MenuItem.scss';
 
 export default class MenuItem extends Component {
   constructor(props) {

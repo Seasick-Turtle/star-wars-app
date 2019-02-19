@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import HomePreview from './categories/HomePreview';
-import '../styles/Home.css';
+import '../styles/Home.scss';
 
 const Home = () => {
 

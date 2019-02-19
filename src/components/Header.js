@@ -1,6 +1,6 @@
 import React from 'react';
 import Nav from '../components/Nav';
-import '../styles/Header.css';
+import '../styles/Header.scss';
 import StarWarsLogo from '../styles/swapi-example-logo-transparent.png';
 
 const Header = ({ searchChange }) => {
