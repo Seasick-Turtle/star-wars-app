@@ -1,9 +1,9 @@
 import React from 'react';
-import '../../styles/sections.css';
+import '../../styles/sections.scss';
 import {Link} from 'react-router-dom';
 
 const Starships = ( starship ) => {
-  const starshipData = starship.location.state.starships;
+  const starshipData = starship.location.state.resource;
 
   return (
     <main>

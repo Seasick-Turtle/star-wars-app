@@ -1,9 +1,9 @@
 import React from 'react';
-import '../../styles/sections.css';
+import '../../styles/sections.scss';
 import {Link} from 'react-router-dom';
 
 const People = (person) => {
-  const personData = person.location.state.people;
+  const personData = person.location.state.resource;
 
   return (
     <main>

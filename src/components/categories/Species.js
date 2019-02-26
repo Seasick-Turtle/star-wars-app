@@ -1,9 +1,9 @@
 import React from 'react';
-import '../../styles/sections.css';
+import '../../styles/sections.scss';
 import {Link} from 'react-router-dom';
 
 const Species = ( species ) => {
-  const speciesData = species.location.state.species;
+  const speciesData = species.location.state.resource;
 
   return (
     <main>
