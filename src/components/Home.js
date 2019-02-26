@@ -13,10 +13,6 @@ const Home = () => {
 
   const categories = ['Films', 'People', 'Planets', 'Species', 'Vehicles', 'Starships'];
 
-
-  // console.log(film);
-
-
   return (
     <div className='home-main'>
       <h2 className='home-main__title'>Star Wars API Example</h2>

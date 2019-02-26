@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { loadState } from '../../localStorage';
 import useHomeResources from '../../hooks/useHomeResources';
 
 const displayListItem = (category, detail, property) => {
@@ -107,9 +106,6 @@ const HomePreview = ( { resource }) => {
   const category = useHomeResources(resource);
 
   let categoryTitle  = category.title || category.name;
-  loadState(resource, category);
-
-  console.log(category);
 
 return (
  <Fragment>

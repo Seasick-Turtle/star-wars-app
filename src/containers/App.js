@@ -1,5 +1,4 @@
 import React, { useState, useEffect, Fragment, StrictMode } from 'react';
-// import 'bulma/css/bulma.css';
 import '../styles/Apps.scss';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from '../components/Header';
@@ -24,7 +23,7 @@ const App = () => {
   return (
     <div className="app">
       <Router>
-        <StrictMode>
+        {/*<StrictMode>*/}
           <Fragment>
             <Header searchChange={onSearchChange}/>
             <Switch>
@@ -39,7 +38,7 @@ const App = () => {
               <Route path='/results' component={Results}/>
             </Switch>
           </Fragment>
-        </StrictMode>
+        {/*</StrictMode>*/}
       </Router>
     </div>
   );
