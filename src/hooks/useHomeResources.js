@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { loadState, saveState } from '../localStorage';
 import { hasOneDayPassed } from '../helpers/hasOneDayPassed';
+import {updateHomeworld} from '../helpers/updateHomeworld';
+import {updateSpecies} from '../helpers/updateSpecies';
 
 // Generates a random value for the API call
 const getRandomIndex = resource => {
@@ -61,12 +63,21 @@ const useHomeResources = resource => {
 
           const data = await response.json();
 
+          //use to replace the homeworld url with the planet name
+          if (data.homeworld) {
+            data.homeworld = await updateHomeworld(data.homeworld);
+          }
+
+          if (data.species) {
+            data.species = await updateSpecies(data.species);
+          }
+
           await setResources(data);
           await saveState(resource, data);
         } else {
           // if its the same day, just load
           // data from local storage
-          setResources(loadState(resource));
+          await setResources(loadState(resource));
         }
 
       })(resource);

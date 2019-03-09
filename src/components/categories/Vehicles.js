@@ -9,7 +9,7 @@ const Vehicles = (vehicle) => {
     <main>
       <section className='section__component'>
         <Link to='/'>Back</Link>
-        <h2>{vehicleData.name}</h2>
+        <h2 className='section__title'>{vehicleData.name}</h2>
         <p><strong>Crew:</strong> {vehicleData.crew}</p>
         <p><strong>Passengers:</strong> {vehicleData.passengers}</p>
         <p><strong>Model:</strong> {vehicleData.model}</p>

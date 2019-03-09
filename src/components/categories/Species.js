@@ -9,7 +9,7 @@ const Species = ( species ) => {
     <main>
       <section className='section__component'>
         <Link to='/'>Back</Link>
-        <h2>{speciesData.name}</h2>
+        <h2 className='section__title'>{speciesData.name}</h2>
         <p><strong>Homeworld:</strong> {speciesData.homeworld}</p>
         <p><strong>Designation:</strong> {speciesData.designation}</p>
         <p><strong>Language:</strong> {speciesData.language}</p>

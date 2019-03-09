@@ -59,6 +59,11 @@
 	--moz-margin-top: -45em;
 }
 
+.menuItem__main-content .menuItem__submenu:last-child {
+	right: 100%;
+	left: auto;
+}
+
 .mainItem__submenu-content {
 	position: absolute;
 	z-index: 1;
@@ -71,7 +76,6 @@
 	display: block;
 	border: 1px solid #343434;
 }
-
 
 .menuItem__submenu-item:hover {
 	background-color: #d2d2d2;

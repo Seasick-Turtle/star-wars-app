@@ -9,7 +9,7 @@ const People = (person) => {
     <main>
       <section className='section__component'>
         <Link to='/'>Back</Link>
-        <h2>{personData.name}</h2>
+        <h2 className='section__title'>{personData.name}</h2>
         <p><strong>Birth Date:</strong> {personData.birth_year}</p>
         <p><strong>Gender:</strong> {personData.gender}</p>
         <p><strong>Height:</strong> {personData.height}</p>

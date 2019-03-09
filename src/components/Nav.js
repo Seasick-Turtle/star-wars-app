@@ -1,5 +1,4 @@
 import React from 'react';
-import Search from '../containers/Search';
 import MenuItem from '../components/MenuItem';
 import {
   TPM,
@@ -10,13 +9,24 @@ import {
   ROTJ,
   TFA
 } from '../Constants';
+import { Link } from 'react-router-dom';
 import '../styles/Nav.scss';
 
 // imports MenuItem in order to display the Navbar items
-const Nav = ({ searchChange }) => {
+const Nav = () => {
   return (
     <nav className='nav nav--collapsible'>
       <ul className='nav__item'>
+        <li className='nav__items'>
+          <Link
+            className='nav__home'
+            to={{
+              pathname: `/`
+          }}
+          >
+            Home
+          </Link>
+        </li>
         <li className='nav__items'>
           <MenuItem film={TPM}/>
         </li>
@@ -39,7 +49,6 @@ const Nav = ({ searchChange }) => {
           <MenuItem film={TFA}/>
         </li>
       </ul>
-      <Search searchChange={searchChange} />
     </nav>
 
   )

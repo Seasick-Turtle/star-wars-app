@@ -4,12 +4,17 @@
 	width: 100%;
 }
 
+.nav__home {
+	text-decoration: none;
+	color: white;
+}
+
 .nav__item {
 	padding: 0;
 	display: flex;
 	width: 100%;
 	justify-content: space-evenly;
-	margin: .5em 0 0 2em;
+	margin: 0.5em auto;
 	list-style: none;
 }
 
@@ -20,7 +25,12 @@
 }
 
 .nav__items {
+	width: auto;
 	margin: .7em;
 	font-size: .8em;
 	font-weight: bold;
+}
+
+.nav__items:first-child {
+	align-self: center;
 }

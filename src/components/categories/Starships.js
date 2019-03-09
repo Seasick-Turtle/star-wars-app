@@ -9,7 +9,7 @@ const Starships = ( starship ) => {
     <main>
       <section className='section__component'>
         <Link to='/'>Back</Link>
-        <h2>{starshipData.name}</h2>
+        <h2 className='section__title'>{starshipData.name}</h2>
         <p><strong>Crew:</strong> {starshipData.crew}</p>
         <p><strong>Passengers:</strong> {starshipData.passengers}</p>
         <p><strong>Model:</strong> {starshipData.model}</p>

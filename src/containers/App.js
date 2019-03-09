@@ -29,13 +29,13 @@ const App = () => {
             <Switch>
               {searchField}
               <Route exact path='/' component={Home} />
-              <Route path='/films' component={Films}/>
-              <Route path='/people' component={People}/>
-              <Route path='/planets' component={Planets}/>
-              <Route path='/species' component={Species}/>
-              <Route path='/vehicles' component={Vehicles}/>
-              <Route path='/starships' component={Starships}/>
-              <Route path='/results' component={Results}/>
+              <Route path='/films/:id' component={Films}/>
+              <Route path='/people/:id' component={People}/>
+              <Route path='/planets/:id' component={Planets}/>
+              <Route path='/species/:id' component={Species}/>
+              <Route path='/vehicles/:id' component={Vehicles}/>
+              <Route path='/starships/:id' component={Starships}/>
+              <Route path='/results/:id' component={Results}/>
             </Switch>
           </Fragment>
         {/*</StrictMode>*/}
