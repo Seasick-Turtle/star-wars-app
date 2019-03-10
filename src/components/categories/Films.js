@@ -1,15 +1,27 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useState, useEffect} from 'react';
 import '../../styles/sections.scss';
 import {Link} from 'react-router-dom';
 
 const Films = film => {
 
+  const [toggleCharacter, setToggleCharacter] = useState(false);
+  const [toggleSpecies, setToggleSpecies] = useState(false);
+  const [togglePlanets, setTogglePlanets] = useState(false);
+  const [toggleStarships, setToggleStarships] = useState(false);
+  const [toggleVehicles, setToggleVehicles] = useState(false);
+
+  const vehicleVisibility = () => {
+    setToggleVehicles(!toggleVehicles);
+  } ;
+
   const displayVehicles = vehicles => {
 
-    if (vehicles.length > 0 ) {
+    if (vehicles.length > 0 && !toggleVehicles) {
+
       return (
         <Fragment>
           <strong>Vehicles:</strong>
+          <button onClick={vehicleVisibility}>Show/Hide</button>
           <ul>
             {filmData.vehicles.map(vehicle => {
               return (
@@ -19,7 +31,16 @@ const Films = film => {
           </ul>
         </Fragment>
       )
-    } else {
+    } else if (toggleVehicles) {
+      return (
+        <Fragment>
+          <strong>Vehicles:</strong>
+          <button onClick={vehicleVisibility}>Show/Hide</button>
+          <ul></ul>
+        </Fragment>
+      )
+    }
+    else {
       return (
         <Fragment>
           <strong>Vehicles:</strong>
@@ -35,13 +56,31 @@ const Films = film => {
     <main>
       <section className='section__component'>
         <Link to='/'>Back</Link>
-        <h2 className='section__title'>{filmData.title}</h2>
-        <p><strong>Episode:</strong> {filmData.episode_id}</p>
-        <p><strong>Director:</strong> {filmData.director}</p>
-        <p><strong>Producer:</strong> {filmData.producer}</p>
-        <p><strong>Release Date:</strong> {filmData.release_date}</p>
-        <p><strong>Opening Crawl:</strong></p>
-        <p>{filmData.opening_crawl}</p>
+        <h2 className='section__title'>
+          {filmData.title}
+        </h2>
+        <p>
+          <strong>Episode:</strong>
+          {filmData.episode_id}
+        </p>
+        <p>
+          <strong>Director:</strong>
+          {filmData.director}
+        </p>
+        <p>
+          <strong>Producer:</strong>
+          {filmData.producer}
+        </p>
+        <p>
+          <strong>Release Date:</strong>
+          {filmData.release_date}
+        </p>
+        <p>
+          <strong>Opening Crawl:</strong>
+        </p>
+        <p>
+          {filmData.opening_crawl}
+        </p>
 
         <strong>Characters</strong>
         {

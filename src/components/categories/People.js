@@ -9,16 +9,45 @@ const People = person => {
     <main>
       <section className='section__component'>
         <Link to='/'>Back</Link>
-        <h2 className='section__title'>{personData.name}</h2>
-        <p><strong>Birth Date:</strong> {personData.birth_year}</p>
-        <p><strong>Gender:</strong> {personData.gender}</p>
-        <p><strong>Height:</strong> {personData.height}</p>
-        <p><strong>Mass:</strong> {personData.mass}</p>
-        <p><strong>Eye Color:</strong> {personData.eye_color}</p>
-        <p><strong>Hair Color:</strong> {personData.hair_color}</p>
-        <p><strong>Skin Color:</strong> {personData.skin_color}</p>
-        <p><strong>Species:</strong> {personData.species}</p>
-        <p><strong>Homeworld:</strong> {personData.homeworld}</p>
+        <h2 className='section__title'>
+          {personData.name}
+        </h2>
+        <p>
+          <strong>Birth Date:</strong>
+          {personData.birth_year}
+        </p>
+        <p>
+          <strong>Gender:</strong>
+          {personData.gender}
+        </p>
+        <p>
+          <strong>Height:</strong>
+          {personData.height}
+        </p>
+        <p>
+          <strong>Mass:</strong>
+          {personData.mass}
+        </p>
+        <p>
+          <strong>Eye Color:</strong>
+          {personData.eye_color}
+        </p>
+        <p>
+          <strong>Hair Color:</strong>
+          {personData.hair_color}
+        </p>
+        <p>
+          <strong>Skin Color:</strong>
+          {personData.skin_color}
+        </p>
+        <p>
+          <strong>Species:</strong>
+          {personData.species}
+        </p>
+        <p>
+          <strong>Homeworld:</strong>
+          {personData.homeworld}
+        </p>
       </section>
     </main>
   )
