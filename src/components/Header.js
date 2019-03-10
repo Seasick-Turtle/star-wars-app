@@ -3,11 +3,11 @@ import Nav from '../components/Nav';
 import '../styles/Header.scss';
 import StarWarsLogo from '../styles/swapi-example-logo-transparent.png';
 
-const Header = ({ searchChange }) => {
+const Header = () => {
   return (
     <header className='main-header'>
         <img src={StarWarsLogo} alt='gold star wars logo' className='logo'/>
-      <Nav searchChange={searchChange} />
+      <Nav />
     </header>
   )
 };

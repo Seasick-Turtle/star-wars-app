@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment, StrictMode } from 'react';
+import React, { Fragment, StrictMode } from 'react';
 import '../styles/Apps.scss';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from '../components/Header';
@@ -13,21 +13,13 @@ import Results from '../components/Results';
 
 const App = () => {
 
-  const [searchField, setSearchField] = useState('');
-
-  const onSearchChange = (e) => {
-    console.log(e.target.value);
-    setSearchField(e.target.value);
-  };
-
   return (
     <div className="app">
       <Router>
         {/*<StrictMode>*/}
           <Fragment>
-            <Header searchChange={onSearchChange}/>
+            <Header/>
             <Switch>
-              {searchField}
               <Route exact path='/' component={Home} />
               <Route path='/films/:id' component={Films}/>
               <Route path='/people/:id' component={People}/>

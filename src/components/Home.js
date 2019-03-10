@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React from 'react';
 import HomePreview from './categories/HomePreview';
 import '../styles/Home.scss';
 
