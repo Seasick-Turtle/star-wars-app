@@ -120,7 +120,7 @@
 .nav__list {
   display: flex;
   width: 100%;
-  justify-content: space-evenly;
+  justify-content: space-around;
   color: white;
   margin: 0.5em auto;
   padding: 0;
@@ -133,7 +133,6 @@
   }
 
   .nav__items {
-    //justify-self: flex-end;
     text-align: center;
     width: 2em;
   }

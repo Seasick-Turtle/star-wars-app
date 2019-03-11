@@ -2,7 +2,6 @@
 // adds commas in the appropriate places and adds a suffix
 // ex data = 123,456 str = tons, result => 123,456 tons
 export const conditionalRenderData = (data, str) => {
-  console.log(typeof data);
   if (data === 'NaN') return 'unknown';
 
   return (

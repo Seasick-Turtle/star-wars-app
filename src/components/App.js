@@ -1,4 +1,4 @@
-import React, { Fragment, StrictMode } from 'react';
+import React, { Fragment} from 'react';
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 import Header from './Header';
 import Home from '../components/Home';
@@ -14,50 +14,48 @@ const App = () => {
   return (
     <div className="app">
       <Router>
-        {/*<StrictMode>*/}
-          <Fragment>
-            <Header/>
-            <Switch>
-              <Route exact path='/' component={Home} />
-              <Route
-                path='/films/:id'
-                render={({ location }) => (
-                 conditionalFilmRender(location.state)
-               )}
-              />
-              <Route
-                path='/people/:id'
-                render={({ location }) => (
-                  conditionalPersonRender(location.state)
-                )}
-              />
-              <Route
-                path='/planets/:id'
-                render={({ location }) => (
-                  conditionalPlanetRender(location.state)
-                )}
-              />
-              <Route
-                path='/species/:id'
-                render={({ location }) => (
-                  conditionalSpeciesRender(location.state)
-                )}
-              />
-              <Route
-                path='/vehicles/:id'
-                render={({ location }) => (
-                  conditionalVehicleRender(location.state)
-                )}
-              />
-              <Route
-                path='/starships/:id'
-                render={({ location }) => (
-                  conditionalStarshipRender(location.state)
-                )}
-              />
-            </Switch>
-          </Fragment>
-        {/*</StrictMode>*/}
+        <Fragment>
+          <Header/>
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route
+              path='/films/:id'
+              render={({ location }) => (
+               conditionalFilmRender(location.state)
+             )}
+            />
+            <Route
+              path='/people/:id'
+              render={({ location }) => (
+                conditionalPersonRender(location.state)
+              )}
+            />
+            <Route
+              path='/planets/:id'
+              render={({ location }) => (
+                conditionalPlanetRender(location.state)
+              )}
+            />
+            <Route
+              path='/species/:id'
+              render={({ location }) => (
+                conditionalSpeciesRender(location.state)
+              )}
+            />
+            <Route
+              path='/vehicles/:id'
+              render={({ location }) => (
+                conditionalVehicleRender(location.state)
+              )}
+            />
+            <Route
+              path='/starships/:id'
+              render={({ location }) => (
+                conditionalStarshipRender(location.state)
+              )}
+            />
+          </Switch>
+        </Fragment>
       </Router>
     </div>
   );
