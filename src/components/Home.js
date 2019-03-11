@@ -1,6 +1,5 @@
 import React from 'react';
 import HomePreview from './categories/HomePreview';
-import '../styles/Home.scss';
 
 const Home = () => {
 

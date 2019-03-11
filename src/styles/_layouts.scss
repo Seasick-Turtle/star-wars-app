@@ -1,0 +1,140 @@
+// App Component Layout
+//*******************************************
+
+.app {
+  display: grid;
+  justify-items: center;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "header"
+    "main";
+}
+
+// Categories Component Layout
+//*******************************************
+
+.categories__component {
+  text-align: left;
+  margin: 1.5em 0;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: .2em;
+  min-width: 2em;
+  max-width: 40em;
+  padding: 3em 3em 0;
+  height: 100%;
+}
+
+.categories__title {
+  text-align: center;
+}
+
+// Header Component Layout
+//*******************************************
+
+.main-header {
+  color: white;
+  background-color: #000;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+// Home Component Layout
+//*******************************************
+
+.home-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 1.5em 0;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: .2em;
+  min-width: 40em;
+}
+
+@media (max-width: 640px) {
+  .home-main {
+    min-width: auto;
+    width: auto;
+    grid-template-areas:
+      "header"
+      "main";
+    grid-template-columns: 1fr;
+  }
+
+  .home-main__title {
+    grid-column: span 2;
+  }
+
+  .home__categories {
+    grid-column: span 2;
+    text-align: left;
+    width: 18em;
+  }
+}
+
+.home-main__title {
+  grid-column: span 2;
+  justify-self: center;
+}
+
+.home__categories {
+  margin: 2em;
+  max-width: 20em;
+  justify-self: center;
+  text-align: center;
+
+  .home__categories-title {
+    text-decoration: underline;
+  }
+
+  .category-list {
+    text-align: left;
+  }
+}
+
+.home__categories:last-child {
+  justify-self: center;
+  grid-column: span 2;
+}
+
+// Nav Component Layout
+//*******************************************
+
+.nav {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.nav__item {
+  width: 100%;
+  align-self: center;
+  list-style: none;
+  text-decoration: none;
+  color: white;
+}
+
+.nav__list {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  color: white;
+  margin: 0.5em auto;
+  padding: 0;
+}
+
+@media (max-width: 640px) {
+  .nav__list {
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .nav__items {
+    //justify-self: flex-end;
+    text-align: center;
+    width: 2em;
+  }
+}

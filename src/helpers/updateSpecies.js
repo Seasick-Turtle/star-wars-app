@@ -5,7 +5,6 @@ export const updateSpecies = async data => {
   fetch(url)
     .then(resp => resp.json())
     .then(speciesData => {
-      // console.log(speciesData.name);
       return speciesData.name
     })
   ));

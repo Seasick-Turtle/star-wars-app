@@ -1,40 +1,47 @@
 import React from 'react';
-import '../../styles/sections.scss';
 import {Link} from 'react-router-dom';
+import {conditionalRenderData} from '../../helpers/conditionalRenderData';
 
 const Planets = (planet) => {
-  const planetData = planet.location.state.resource;
+
+  const planetData = planet.planet.resource;
 
   return (
     <main>
-      <section className='section__component'>
+      <section className='categories__component'>
         <Link to='/'>Back</Link>
-        <h2 className='section__title'>
+        <h2 className='categories__title'>
           {planetData.name}
         </h2>
         <p>
-          <strong>Climate:</strong>
+          <strong>Climate: </strong>
           {planetData.climate}
         </p>
         <p>
-          <strong>Population:</strong>
-          {planetData.population}
+          <strong>Population: </strong>
+          {
+            conditionalRenderData(planetData.population, '')
+          }
         </p>
         <p>
-          <strong>Gravity:</strong>
+          <strong>Gravity: </strong>
           {planetData.gravity}
         </p>
         <p>
-          <strong>Terrain:</strong>
+          <strong>Terrain: </strong>
           {planetData.terrain}
         </p>
         <p>
-          <strong>Rotation Period:</strong>
-          {planetData.rotation_period}
+          <strong>Rotation Period: </strong>
+          {
+            conditionalRenderData(planetData.rotation_period, 'standard hours')
+          }
         </p>
         <p>
-          <strong>Orbital Period:</strong>
-          {planetData.orbital_period}
+          <strong>Orbital Period: </strong>
+          {
+            conditionalRenderData(planetData.orbital_period, 'standard hours')
+          }
         </p>
       </section>
     </main>

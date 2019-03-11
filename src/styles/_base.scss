@@ -1,0 +1,30 @@
+// Resets CSS
+//*******************************************
+
+@import '~normalize.css';
+
+// Base CSS
+//*******************************************
+
+* {
+  box-sizing: border-box;
+}
+
+body, html, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: #222;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+}

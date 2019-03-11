@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/Nav.scss';
 import {
   TPM,
   AOTC,
@@ -21,7 +20,7 @@ const Nav = () => {
 
   return (
     <nav className='nav nav--collapsible'>
-      <ul className='nav__item'>
+      <ul className='nav__list'>
         <li
           className='nav__items'>
           <Link
@@ -41,11 +40,13 @@ const Nav = () => {
               <Link
                 key={film.id}
                 className='nav__item'
+                film={film}
                 to={{
-                  pathname: `/films/${film.title}`,
-                  state: { film: film }
+                  pathname: `/films/${film.title.replace(/\s+/g, '')}`,
+                  state: {
+                    film
+                  }
                 }}
-
               >
                 {film.title}
               </Link>
