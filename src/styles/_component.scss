@@ -1,36 +1,29 @@
 // Button
 button {
-  border-radius: 10px;
+  border-radius: $rounded-border;
 }
 
 // Categories Components
 //*******************************************
 
 .categories__lists {
-  display: flex;
+  @include justified-flex-box($flex-box, $justified-center);
   flex-direction: column;
-  justify-content: center;
   padding: 0;
 }
 
 .categories__scroll {
-  border: 1px solid black;
-  border-radius: 10px;
+  @include basic-box($rounded-border, $small-black-border);
   overflow-y: scroll;
   max-height: 7em;
   padding: 2em auto;
-}
-
-.categories--bordered {
-  border: 1px solid black;
-  border-radius: 10px;
 }
 
 // Logo
 //*******************************************
 
 .logo {
-  justify-content: center;
+  justify-content: $justified-center;
   width: 17em;
   height: 10em;
 }
@@ -92,8 +85,7 @@ button {
   }
 
   .nav__navigation {
-    display: inline-flex;
-    justify-content: space-between;
+    @include justified-flex-box(inline-flex, space-between);
     padding: .5em;
   }
 

@@ -2,23 +2,19 @@
 //*******************************************
 
 .app {
-  display: grid;
+  @include grid-layout(grid, $grid-single-column);
   justify-items: center;
   grid-template-rows: auto;
-  grid-template-areas:
-    "header"
-    "main";
 }
 
 // Categories Component Layout
 //*******************************************
 
 .categories__component {
+  @include basic-box($small-black-border, .3em);
   text-align: left;
   margin: 1.5em 0;
   background-color: white;
-  border: 1px solid black;
-  border-radius: .2em;
   min-width: 2em;
   max-width: 40em;
   padding: 3em 3em 0;
@@ -33,11 +29,10 @@
 //*******************************************
 
 .main-header {
+  @include justified-flex-box($flex-box, $justified-center);
   color: white;
   background-color: #000;
-  display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   width: 100%;
 }
 
@@ -45,12 +40,10 @@
 //*******************************************
 
 .home-main {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  @include grid-columns(grid, 1fr 1fr);
+  @include basic-box($small-black-border, .2em);
   margin: 1.5em 0;
   background-color: white;
-  border: 1px solid black;
-  border-radius: .2em;
   min-width: 40em;
 }
 
@@ -58,25 +51,23 @@
   .home-main {
     min-width: auto;
     width: auto;
-    grid-template-areas:
-      "header"
-      "main";
+    grid-template-areas: $grid-single-column;
     grid-template-columns: 1fr;
   }
 
   .home-main__title {
-    grid-column: span 2;
+    grid-column: $cover-2-columns;
   }
 
   .home__categories {
-    grid-column: span 2;
+    grid-column: $cover-2-columns;
     text-align: left;
     width: 18em;
   }
 }
 
 .home-main__title {
-  grid-column: span 2;
+  grid-column: $cover-2-columns;
   justify-self: center;
 }
 
@@ -97,15 +88,14 @@
 
 .home__categories:last-child {
   justify-self: center;
-  grid-column: span 2;
+  grid-column: $cover-2-columns;
 }
 
 // Nav Component Layout
 //*******************************************
 
 .nav {
-  display: flex;
-  justify-content: center;
+  @include justified-flex-box($flex-box, $justified-center);
   width: 100%;
 }
 
@@ -118,9 +108,8 @@
 }
 
 .nav__list {
-  display: flex;
+  @include justified-flex-box($flex-box, $justified-space-around);
   width: 100%;
-  justify-content: space-around;
   color: white;
   margin: 0.5em auto;
   padding: 0;
@@ -128,8 +117,7 @@
 
 @media (max-width: 640px) {
   .nav__list {
-    flex-direction: column;
-    justify-content: flex-end;
+    @include justified-flex-box(column, flex-end);
   }
 
   .nav__items {
