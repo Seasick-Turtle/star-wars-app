@@ -1,0 +1,66 @@
+// Resets CSS
+//*******************************************
+
+@import '~normalize.css';
+
+// Variables
+//*******************************************
+$cover-2-columns: span 2;
+$flex-box: flex;
+$grid-single-column:
+  "header"
+  "main";
+$justified-center: center;
+$justified-space-around: space-around;
+$rounded-border: 10px;
+$small-black-border: 1px solid black;
+
+
+// Mixins
+//*******************************************
+@mixin basic-box($box, $radius) {
+  border: $box;
+  border-radius: $radius;
+}
+
+@mixin justified-flex-box($flex, $justified) {
+  display: $flex;
+  justify-content: $justified;
+}
+
+@mixin grid-layout($grid, $template-area) {
+  display: $grid;
+  grid-template-areas: $template-area;
+}
+
+@mixin grid-columns($grid, $columns) {
+  display: $grid;
+  grid-template-columns: $columns;
+}
+
+
+// Base CSS
+//*******************************************
+
+* {
+  box-sizing: border-box;
+}
+
+body, html, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: #222;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+}

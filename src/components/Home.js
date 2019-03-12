@@ -1,29 +1,19 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React from 'react';
 import HomePreview from './categories/HomePreview';
-import '../styles/Home.scss';
 
 const Home = () => {
 
-  const [film, setFilm] = useState({});
-  const [person, setPerson] = useState({});
-  const [planet, setPlanet] = useState({});
-  const [specie, setSpecie] = useState({});
-  const [vehicle, setVehicle] = useState({});
-  const [starship, setStarships] = useState({});
-
-  const categories = ['Films', 'People', 'Planets', 'Species', 'Vehicles', 'Starships'];
+  const categories = ['People', 'Planets', 'Species', 'Vehicles', 'Starships'];
 
   return (
     <div className='home-main'>
-      <h2 className='home-main__title'>Star Wars API Example</h2>
+      <h2 className='home-main__title'>Star Wars API App</h2>
       {
         categories.map((category) => {
           return (
             <div key={category} className='home__categories'>
-              <h2>{category}</h2>
-              <Fragment>
+              <h2 className='home__categories-title'>{category}</h2>
                 <HomePreview resource={category.toLowerCase()} />
-              </Fragment>
             </div>
           )
         })

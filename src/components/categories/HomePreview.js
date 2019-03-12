@@ -3,29 +3,18 @@ import { Link } from 'react-router-dom';
 import useHomeResources from '../../hooks/useHomeResources';
 
 const displayListItem = (category, detail, property) => {
+
+  let previewData = category[property];
+
   return (
     <Fragment>
-      { `${detail}: ${category[property]}` }
+      { `${detail}: ${previewData}` }
     </Fragment>
   );
 };
 
 const displayPreview = (resource, category) => {
   switch (resource) {
-    case 'films':
-      return (
-        <Fragment>
-          <li>
-            { displayListItem(category, 'Directed by', 'director')}
-          </li>
-          <li>
-            { displayListItem(category, 'Produced by', 'producer')}
-          </li>
-          <li>
-            { displayListItem(category, 'Released', 'release_date')}
-          </li>
-        </Fragment>
-      );
     case 'people':
       return (
         <Fragment>
@@ -58,10 +47,10 @@ const displayPreview = (resource, category) => {
       return (
         <Fragment>
           <li>
-            { displayListItem(category, 'Classification', 'episode_id')}
+            { displayListItem(category, 'Classification', 'classification')}
           </li>
           <li>
-            { displayListItem(category, 'Average Lifespan', 'episode_id')}
+            { displayListItem(category, 'Average Lifespan', 'average_lifespan')}
           </li>
           <li>
             { displayListItem(category, 'Homeworld', 'homeworld')}
@@ -106,17 +95,17 @@ const HomePreview = ( { resource }) => {
   const category = useHomeResources(resource);
 
   let categoryTitle  = category.title || category.name;
+  let categoryPath = categoryTitle !== undefined ? categoryTitle.replace(/\s+/g, '') : categoryTitle;
 
 return (
  <Fragment>
-   <h3>{categoryTitle}</h3>
-   <ul>
+   <h3 className='home__category-title'>{categoryTitle}</h3>
+   <ul className='category-list'>
      {displayPreview(resource, category)}
    </ul>
    <Link
-     className='home__category'
      to={{
-       pathname: `/${resource}/${categoryTitle}`,
+       pathname: `/${resource}/${categoryPath}`,
        state: {resource: category}
      }} >See more</Link>
  </Fragment>)
