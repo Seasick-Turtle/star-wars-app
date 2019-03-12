@@ -1,7 +1,6 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
 import {conditionalRenderData} from '../../helpers/conditionalRenderData';
-import Films from './Films';
 
 const Species = species => {
   const speciesData = species.species.resource;

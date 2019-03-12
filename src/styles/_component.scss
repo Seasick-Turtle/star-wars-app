@@ -3,6 +3,15 @@ button {
   border-radius: $rounded-border;
 }
 
+.fas {
+  top: 28.5%;
+  right: 10%;
+  position: absolute;
+}
+
+.rotated {
+  transform: rotate(90deg);
+}
 // Categories Components
 //*******************************************
 
@@ -63,7 +72,7 @@ button {
       height: 15em;
     }
   }
-  //
+
   .menu--hidden {
     height: 0;
     overflow: hidden;
@@ -84,11 +93,6 @@ button {
     flex-direction: column;
   }
 
-  .nav__navigation {
-    @include justified-flex-box(inline-flex, space-between);
-    padding: .5em;
-  }
-
   .nav__button {
     font-size: 0.9em;
     font-weight: bold;
@@ -103,15 +107,20 @@ button {
   .nav__button:hover {
     cursor: pointer;
   }
+
+  .nav__list {
+    flex-direction: column;
+  }
+
+  .nav__navigation {
+    @include justified-flex-box(inline-flex, space-between);
+    padding: .5em;
+  }
 }
 
 .nav__home {
   text-decoration: none;
   color: white;
-}
-
-.nav__navigation {
-  display: inline-flex;
 }
 
 .nav__items {
@@ -121,4 +130,8 @@ button {
   font-weight: bold;
   list-style-type: none;
   align-self: center;
+}
+
+.nav__navigation {
+  display: inline-flex;
 }
