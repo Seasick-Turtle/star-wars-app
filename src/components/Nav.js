@@ -19,6 +19,7 @@ const Nav = () => {
     ];
 
   const [showMenu, setShowMenu] = useState(false);
+  const [turnedArrow, setTurnedArrow] = useState(false);
 
   // toggles the state of the visibility of the menu
   // changes id display attribute from none to inline-flex
@@ -26,6 +27,7 @@ const Nav = () => {
   const toggleMenu = () => {
     setShowMenu(!showMenu);
     document.getElementById('menu').style.display = 'inline-flex';
+    setTurnedArrow(!turnedArrow);
   };
 
   return (
@@ -44,7 +46,8 @@ const Nav = () => {
           </Link>
         </li>
         <button onClick={toggleMenu} className='nav__button'>
-          Menu V
+          <i className={turnedArrow ? 'fas fa-caret-down rotated' :'fas fa-caret-down'}> </i>
+          Menu
         </button>
       </div>
 
