@@ -10,7 +10,12 @@ export const hasOneDayPassed = () => {
 
   // otherwise return true and set storageDate to
   // current day
-  localStorage.clear();
+  const items = ['people', 'planets', 'species', 'starships', 'vehicles', 'storageDate' ];
+
+  items.forEach(item => {
+    localStorage.removeItem(item);
+  });
+
   localStorage.storageDate = date;
   return true;
 };
