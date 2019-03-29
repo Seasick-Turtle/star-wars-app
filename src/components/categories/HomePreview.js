@@ -92,21 +92,28 @@ const displayPreview = (resource, category) => {
 
 const HomePreview = ( { resource }) => {
 
-  const category = useHomeResources(resource);
+  // const category = useHomeResources(resource);
+  const { resources, isLoading } = useHomeResources(resource);
 
-  let categoryTitle  = category.title || category.name;
+  // console.log(resour)
+
+  let categoryTitle  = resources.title || resources.name;
   let categoryPath = categoryTitle !== undefined ? categoryTitle.replace(/\s+/g, '') : categoryTitle;
 
 return (
  <Fragment>
    <h3 className='home__category-title'>{categoryTitle}</h3>
    <ul className='category-list'>
-     {displayPreview(resource, category)}
+     {
+       isLoading ?
+         (<div>Loading...</div>) :
+       displayPreview(resource, resources)
+     }
    </ul>
    <Link
      to={{
        pathname: `/${resource}/${categoryPath}`,
-       state: {resource: category}
+       state: {resource: resources}
      }} >See more</Link>
  </Fragment>)
 };

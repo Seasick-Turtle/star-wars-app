@@ -43,11 +43,12 @@ const getRandomIndex = resource => {
 const useHomeResources = resource => {
 
   const [resources, setResources] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
   const resourceIndex = getRandomIndex(resource);
   let newIndex;
 
-
     useEffect(() => {
+      setIsLoading(true);
 
       (async resource => {
         // checks if the date has changed
@@ -74,17 +75,20 @@ const useHomeResources = resource => {
 
           await setResources(data);
           await saveState(resource, data);
+          await setIsLoading(false);
         } else {
           // if its the same day, just load
           // data from local storage
           await setResources(loadState(resource));
+          await setIsLoading(false);
         }
 
       })(resource);
 
     }, [resource]);
 
-    return resources;
+
+    return { resources, isLoading };
 
 };
 
