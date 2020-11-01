@@ -46,7 +46,7 @@ const Films = film => {
 
   return (
     <main>
-      <div className='categories__component categories__component__films'>
+      <div className='categories__component__films'>
         <Link to='/'>Back</Link>
         <h2 className='categories__title'>
           {filmData.title}

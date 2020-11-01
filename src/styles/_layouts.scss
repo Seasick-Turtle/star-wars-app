@@ -21,6 +21,25 @@
   height: 100%;
 }
 
+.categories__component__planet, .categories__component__films {
+  @extend .categories__component;
+  display: flex;
+  flex-direction: column;  
+  justify-content: center;
+}
+
+.categories__component__films-img, .categories__component__planet-img { 
+  align-self: center;
+  max-height: 20em;
+  max-width: 50%;
+  margin-bottom: 20px;
+}
+
+.categories__component__planet-img { 
+  text-align: center;
+  max-height: 25em;
+}
+
 .categories__title {
   text-align: center;
 }
