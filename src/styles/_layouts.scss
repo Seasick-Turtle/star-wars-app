@@ -33,11 +33,13 @@
   max-height: 20em;
   max-width: 50%;
   margin-bottom: 20px;
+  box-shadow: 7px 3px darkgrey;
 }
 
 .categories__component__planet-img { 
   text-align: center;
   max-height: 25em;
+  border-radius:50%;
 }
 
 .categories__title {
