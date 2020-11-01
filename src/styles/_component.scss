@@ -28,6 +28,23 @@ button {
   padding: 2em auto;
 }
 
+.categories__component__planet .categories__component__films {
+  display: flex;
+  flex-direction: column;  
+  justify-content: center;
+}
+
+.categories__component__films-img { 
+  max-height: 40em;
+  max-width: 100%;
+
+}
+
+.categories__component__planet-img { 
+  text-align: center;
+  max-height: 15em;
+}
+
 // Header
 //*******************************************
 
