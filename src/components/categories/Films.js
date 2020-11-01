@@ -5,18 +5,53 @@ import DisplayStarships from '../details/DisplayStarships';
 import DisplayPlanets from '../details/DisplayPlanets';
 import DisplaySpecies from '../details/DisplaySpecies';
 import DisplayVehicles from '../details/DisplayVehicles';
+import FilmImages from '../../helpers/films';
 
 const Films = film => {
 
   let filmData = film.film.film || film.location.state.film;
+  let filmTitle = '';
+
+  switch (filmData.title) {
+    case 'The Phantom Menace':
+      filmTitle = 'ThePhantomMenace';
+      break;
+    case 'Attack of the Clones':
+      filmTitle = 'AttackOfTheClones';
+      break;
+
+    case 'Revenge of the Sith':
+      filmTitle = 'RevengeOfTheSith';
+      break;
+
+    case 'A New Hope':
+      filmTitle = 'ANewHope';
+      break;
+
+    case 'The Empire Strikes Back':
+      filmTitle = 'TheEmpireStrikesBack';
+      break;
+
+    case 'Return of the Jedi':
+      filmTitle = 'ReturnOfTheJedi';
+      break;
+
+    case 'The Force Awakens':
+      filmTitle = 'TheForceAwakens';
+      break;
+
+    default:
+      break;
+  }
 
   return (
     <main>
-      <div className='categories__component'>
+      <div className='categories__component categories__component__films'>
         <Link to='/'>Back</Link>
         <h2 className='categories__title'>
           {filmData.title}
         </h2>
+        <img className="categories__component__films-img" src={FilmImages[filmTitle]} />
         <p>
           <strong>Episode: </strong>
           {filmData.episode_id}
@@ -43,24 +78,24 @@ const Films = film => {
         <DisplayCharacters
           characters={filmData.people}
         />
-        <br/>
+        <br />
         <DisplayPlanets
           planets={filmData.planets}
         />
-        <br/>
+        <br />
         <DisplayStarships
           starships={filmData.starships}
         />
-        <br/>
+        <br />
         <DisplaySpecies
           species={filmData.species}
         />
-        <br/>
+        <br />
         <DisplayVehicles
           vehicles={filmData.vehicles}
         />
       </div>
-    </main>
+    </main >
   )
 };
 

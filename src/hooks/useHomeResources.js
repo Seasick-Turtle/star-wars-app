@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { loadState, saveState } from '../localStorage';
 import { hasOneDayPassed } from '../helpers/hasOneDayPassed';
-import {updateHomeworld} from '../helpers/updateHomeworld';
-import {updateSpecies} from '../helpers/updateSpecies';
+import { updateHomeworld } from '../helpers/updateHomeworld';
+import { updateSpecies } from '../helpers/updateSpecies';
 
 // Generates a random value for the API call
 const getRandomIndex = resource => {
@@ -47,48 +47,52 @@ const useHomeResources = resource => {
   const resourceIndex = getRandomIndex(resource);
   let newIndex;
 
-    useEffect(() => {
-      setIsLoading(true);
+  useEffect(() => {
+    setIsLoading(true);
 
-      (async resource => {
-        // checks if the date has changed
-        // if so, create new API calls
-        if (hasOneDayPassed()) {
-          let response = await fetch(`https://swapi.co/api/${resource}/${resourceIndex}/`);
+    (async resource => {
+      // checks if the date has changed
+      // if so, create new API calls
+      if (hasOneDayPassed()) {
+        let response = await fetch(`https://swapi.dev/api/${resource}/${resourceIndex}/`, {
+          mode: 'cors'
+        });
 
-          // if API call fails, try again
-          while(!response.ok) {
-            newIndex = getRandomIndex(resource);
-            response = await fetch(`https://swapi.co/api/${resource}/${newIndex}/`);
-          }
-
-          const data = await response.json();
-
-          //use to replace the homeworld url with the planet name
-          if (data.homeworld) {
-            data.homeworld = await updateHomeworld(data.homeworld);
-          }
-
-          if (data.species) {
-            data.species = await updateSpecies(data.species);
-          }
-
-          await setResources(data);
-          await saveState(resource, data);
-          await setIsLoading(false);
-        } else {
-          // if its the same day, just load
-          // data from local storage
-          await setResources(loadState(resource));
-          await setIsLoading(false);
+        // if API call fails, try again
+        while (!response.ok) {
+          newIndex = getRandomIndex(resource);
+          response = await fetch(`https://swapi.dev/api/${resource}/${newIndex}/`, {
+            mode: 'cors'
+          });
         }
 
-      })(resource);
+        const data = await response.json();
 
-    }, [resource]);
+        //use to replace the homeworld url with the planet name
+        if (data.homeworld) {
+          data.homeworld = await updateHomeworld(data.homeworld);
+        }
+
+        if (data.species) {
+          data.species = await updateSpecies(data.species);
+        }
+
+        await setResources(data);
+        await saveState(resource, data);
+        await setIsLoading(false);
+      } else {
+        // if its the same day, just load
+        // data from local storage
+        await setResources(loadState(resource));
+        await setIsLoading(false);
+      }
+
+    })(resource);
+
+  }, [resource]);
 
 
-    return { resources, isLoading };
+  return { resources, isLoading };
 
 };
 
