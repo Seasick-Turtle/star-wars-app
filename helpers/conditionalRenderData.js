@@ -6,5 +6,5 @@ export const conditionalRenderData = (data, str) => {
 
 	return data === 'unknown'
 		? data
-		: `${data.replace(/\B(?=(\d{3})+(?!\d))/g, ',')} ${str}`;
+		: `${data.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')} ${str}`;
 };

@@ -76,18 +76,4 @@ const HomePreview = ({ category }) => {
 	);
 };
 
-export async function getStaticProps() {
-	const res = await fetch(`https://swapi.dev/api/people/1`);
-
-	if (!res.ok) {
-		res = { data: undefined };
-	}
-
-	const fetchedData = res.json();
-
-	return {
-		props: { fetchedData: { name: 'Luke' } },
-	};
-}
-
 export default HomePreview;
