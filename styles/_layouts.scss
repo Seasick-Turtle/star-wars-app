@@ -1,0 +1,150 @@
+// App Component Layout
+//*******************************************
+
+.app {
+	@include grid-layout(grid, $grid-single-column);
+	justify-items: center;
+	grid-template-rows: auto;
+}
+
+// Categories Component Layout
+//*******************************************
+
+.categories__component {
+	@include basic-box($small-black-border, 0.3em);
+	text-align: left;
+	margin: 1.5em 0;
+	background-color: white;
+	min-width: 2em;
+	max-width: 40em;
+	padding: 3em 3em 0;
+	height: 100%;
+}
+
+.categories__component__planet,
+.categories__component__films {
+	@extend .categories__component;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.categories__component__films-img,
+.categories__component__planet-img {
+	align-self: center;
+	max-height: 20em;
+	max-width: 50%;
+	margin-bottom: 20px;
+	box-shadow: 7px 3px darkgrey;
+}
+
+.categories__component__planet-img {
+	text-align: center;
+	max-height: 25em;
+	border-radius: 50%;
+}
+
+.categories__title {
+	text-align: center;
+}
+
+// Header Component Layout
+//*******************************************
+
+.main-header {
+	@include justified-flex-box($flex-box, $justified-center);
+	color: white;
+	background-color: #000;
+	flex-wrap: wrap;
+	width: 100%;
+}
+
+// Home Component Layout
+//*******************************************
+
+.home-main {
+	@include grid-columns(grid, 1fr 1fr);
+	@include basic-box($small-black-border, 0.2em);
+	margin: 1.5em 0;
+	background-color: white;
+	min-width: 40em;
+}
+
+@media (max-width: 640px) {
+	.home-main {
+		min-width: auto;
+		width: auto;
+		grid-template-areas: $grid-single-column;
+		grid-template-columns: 1fr;
+	}
+
+	.home-main__title {
+		grid-column: $cover-2-columns;
+	}
+
+	.home__categories {
+		grid-column: $cover-2-columns;
+		text-align: left;
+		width: 18em;
+	}
+}
+
+.home-main__title {
+	grid-column: $cover-2-columns;
+	justify-self: center;
+}
+
+.home__categories {
+	margin: 2em;
+	max-width: 20em;
+	justify-self: center;
+	text-align: center;
+
+	.home__categories-title {
+		text-decoration: underline;
+	}
+
+	.category-list {
+		text-align: left;
+	}
+}
+
+.home__categories:last-child {
+	justify-self: center;
+	grid-column: $cover-2-columns;
+}
+
+// Nav Component Layout
+//*******************************************
+
+.nav {
+	@include justified-flex-box($flex-box, $justified-center);
+	width: 100%;
+}
+
+.nav__item {
+	width: 100%;
+	align-self: center;
+	list-style: none;
+	text-decoration: none;
+	color: white;
+}
+
+.nav__list {
+	@include justified-flex-box($flex-box, $justified-space-around);
+	width: 100%;
+	color: white;
+	margin: 0.5em auto;
+	padding: 0;
+}
+
+@media (max-width: 640px) {
+	.nav__list {
+		@include justified-flex-box(column, flex-end);
+	}
+
+	.nav__items {
+		text-align: center;
+		width: 2em;
+	}
+}
