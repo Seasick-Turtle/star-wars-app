@@ -1,66 +1,99 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { conditionalRenderData } from '../../helpers/conditionalRenderData';
-import { loadState } from '../../localStorage';
+import { gql, useQuery } from '@apollo/client';
+
+const GET_VEHICLE = gql`
+	query vehicle($vehicleId: ID) {
+		vehicle(vehicleID: $vehicleId) {
+			name
+			model
+			vehicleClass
+			manufacturers
+			costInCredits
+			crew
+			passengers
+			maxAtmospheringSpeed
+			cargoCapacity
+			consumables
+		}
+	}
+`;
 
 const People = () => {
-	const data = loadState('vehicles');
 	const {
-		name,
-		crew,
-		passengers,
-		model,
-		consumables,
-		cargo_capacity,
-		max_atmosphering_speed,
-		manufacturer,
-		vehicle_class,
-		cost_in_credits,
-	} = data;
+		query: { id: vehicleId },
+	} = useRouter();
 
-	return (
-		<main>
-			<section className="categories__component">
-				<Link href="/">Back</Link>
-				<h2 className="categories__title">{name}</h2>
-				<p>
-					<strong>Crew: </strong>
-					{conditionalRenderData(crew, '')}
-				</p>
-				<p>
-					<strong>Passengers: </strong>
-					{conditionalRenderData(passengers, '')}
-				</p>
-				<p>
-					<strong>Model: </strong>
-					{model}
-				</p>
-				<p>
-					<strong>Consumables: </strong>
-					{`${conditionalRenderData(consumables, '')}`}
-				</p>
-				<p>
-					<strong>Cargo Capacity: </strong>
-					{conditionalRenderData(cargo_capacity, 'tons')}
-				</p>
-				<p>
-					<strong>Max Atmosphering Speed: </strong>
-					{conditionalRenderData(max_atmosphering_speed, 'kph')}
-				</p>
-				<p>
-					<strong>Manufacturer: </strong>
-					{manufacturer}
-				</p>
-				<p>
-					<strong>Vehicle Class: </strong>
-					{vehicle_class}
-				</p>
-				<p>
-					<strong>Cost (In Credits): </strong>
-					{conditionalRenderData(cost_in_credits, '')}
-				</p>
-			</section>
-		</main>
-	);
+	const { loading, error, data } = useQuery(GET_VEHICLE, {
+		variables: { vehicleId },
+		errorPolicy: 'all',
+		fetchPolicy: 'cache-first',
+	});
+
+	if (loading) {
+		return 'Loading...';
+	} else {
+		const {
+			vehicle: {
+				name,
+				model,
+				vehicleClass,
+				manufacturers,
+				costInCredits,
+				crew,
+				passengers,
+				maxAtmospheringSpeed,
+				cargoCapacity,
+				consumables,
+			},
+		} = data;
+
+		return (
+			<main>
+				<section className="categories__component">
+					<Link href="/">Back</Link>
+					<h2 className="categories__title">{name}</h2>
+					<p>
+						<strong>Crew: </strong>
+						{conditionalRenderData(crew, '')}
+					</p>
+					<p>
+						<strong>Passengers: </strong>
+						{conditionalRenderData(passengers, '')}
+					</p>
+					<p>
+						<strong>Model: </strong>
+						{model}
+					</p>
+					<p>
+						<strong>Consumables: </strong>
+						{`${conditionalRenderData(consumables, '')}`}
+					</p>
+					<p>
+						<strong>Cargo Capacity: </strong>
+						{conditionalRenderData(cargoCapacity, 'tons')}
+					</p>
+					<p>
+						<strong>Max Atmosphering Speed: </strong>
+						{conditionalRenderData(maxAtmospheringSpeed, 'kph')}
+					</p>
+					<p>
+						<strong>Manufacturer: </strong>
+						{manufacturers}
+					</p>
+					<p>
+						<strong>Vehicle Class: </strong>
+						{vehicleClass}
+					</p>
+					<p>
+						<strong>Cost (In Credits): </strong>
+						{conditionalRenderData(costInCredits, '')}
+					</p>
+				</section>
+			</main>
+		);
+	}
 };
 
 export default People;
