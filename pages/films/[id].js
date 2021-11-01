@@ -70,7 +70,7 @@ const Films = () => {
 	const { characters, planets, starships, species, vehicles } = film;
 
 	return (
-		<main>
+		<main style={{ display: 'flex', justifyContent: 'center' }}>
 			<div className="categories__component__films">
 				<Link href="/">Back</Link>
 				<h2 className="categories__title">{title}</h2>
