@@ -20,7 +20,7 @@ const GET_VEHICLE = gql`
 	}
 `;
 
-const People = () => {
+const Vehicle = () => {
 	const {
 		query: { id: vehicleId },
 	} = useRouter();
@@ -96,4 +96,4 @@ const People = () => {
 	}
 };
 
-export default People;
+export default Vehicle;
