@@ -22,7 +22,7 @@ const GET_SPECIES = gql`
 	}
 `;
 
-const People = () => {
+const Species = () => {
 	const {
 		query: { id: speciesId },
 	} = useRouter();
@@ -98,4 +98,4 @@ const People = () => {
 	}
 };
 
-export default People;
+export default Species;

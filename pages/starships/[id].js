@@ -20,7 +20,7 @@ const GET_STARSHIP = gql`
 	}
 `;
 
-const People = () => {
+const Starships = () => {
 	const {
 		query: { id: starshipId },
 	} = useRouter();
@@ -96,4 +96,4 @@ const People = () => {
 	}
 };
 
-export default People;
+export default Starships;

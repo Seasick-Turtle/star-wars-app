@@ -3,6 +3,7 @@
 // ex data = 123,456 str = tons, result => 123,456 tons
 export const conditionalRenderData = (data, str) => {
 	if (data === 'NaN') return 'unknown';
+	if (data === null) return 'unknown';
 
 	return data === 'unknown'
 		? data
